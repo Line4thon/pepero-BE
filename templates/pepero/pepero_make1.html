@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>빼빼로 만들기 1단계</title>
+  </head>
+
+  <!--css 파일-->
+  <style>
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+      align-items: center;
+    }
+
+    .make1-form {
+      align-items: center;
+      position: absolute;
+      width: 390px;
+      height: 844px;
+      background-color: #faf9f5;
+      margin-left: 40%;
+    }
+
+    .header {
+      padding-top: 70px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #text1 {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      color: #4b2a0b;
+    }
+
+    #text2 {
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      color: #885c33;
+    }
+
+    .make1 {
+      height: 480px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .show {
+      margin-left: 80px;
+      width: 48%;
+      padding: 10px;
+    }
+
+    #pepero {
+      height: 477px;
+      width: 40px;
+      padding-left: 10px;
+      position: absolute;
+      z-index: 1;
+    }
+    #make1Image {
+      position: relative;
+      margin-left: 7px;
+    }
+
+    #make1Image.img {
+      position: absoulute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+    }
+    .option {
+      width: 48%;
+      padding: 10px;
+      padding-top: 5px;
+      margin-right: 35px;
+    }
+
+    .option button {
+      width: 117px;
+      height: 73px;
+      display: block;
+      background-color: #f7f7f7;
+      margin: 20px 0;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 16px;
+      border: 1px solid #cbcbcb;
+    }
+
+    .next {
+      width: 100%;
+      padding-top: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .return,
+    .make2 {
+      width: 120px;
+      height: 44px;
+      margin-top: 5px;
+      margin-left: 30px;
+      border-radius: 16px;
+      border: 1px solid;
+    }
+
+    .return {
+      margin-left: 5px;
+      background-color: #401f00;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .make2 {
+      background-color: #eaded8;
+      color: #401f00;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+    }
+  </style>
+  <body>
+    <!--전체 화면을 포함하는 section 박스-->
+    <section class="make1-form">
+      <!--header를 포함하는 div 태그-->
+      <div class="header">
+        <p id="text1">1단계 : 빼빼로 코팅하기!</p>
+        <p id="text2">
+          어떤 초콜릿이든 빼빼로를 코팅할까요?<br />버튼을 눌러 선택해주세요!
+        </p>
+      </div>
+      <!--빼빼로를 만드는 화면을 포함하는 div 태그-->
+      <div class="make1">
+        <!--만든 빼빼로를 보여주는 화면을 포함하는 div 태그-->
+        <div class="show">
+          <img src="pepero.png" id="pepero" />
+          <div id="make1Image"></div>
+        </div>
+        <!--버튼을 옵션을 선택하는 화면을 포함하는 div태그-->
+        <div class="option">
+          <button type="button" id="choco">초코</button>
+          <button type="button" id="strawberry">딸기</button>
+          <button type="button" id="whitechoco">화이트 초코</button>
+          <button type="button" id="greentea">녹차</button>
+          <button type="button" id="blueberry">블루베리</button>
+        </div>
+      </div>
+      <!--다음 과정을 선택할 버튼을 포함하는 div 태그-->
+      <div class="next">
+        <button type="button" class="return">원상태로</button>
+        <button type="button" class="make2" id="nextButton">다음 단계</button>
+      </div>
+    </section>
+    <script type="text/javascript">
+      const chocoButton = document.getElementById("choco");
+      const strawberryButton = document.getElementById("strawberry");
+      const whiteChocoButton = document.getElementById("whitechoco");
+      const greenTeaButton = document.getElementById("greentea");
+      const blueberryButton = document.getElementById("blueberry");
+      const make1Image = document.getElementById("make1Image");
+
+      const buttons = [
+        chocoButton,
+        strawberryButton,
+        whiteChocoButton,
+        greenTeaButton,
+        blueberryButton,
+      ];
+      buttons.forEach((button) => {
+        button.style.backgroundColor = "#f7f7f7";
+        button.style.color = "#000";
+      });
+
+      chocoButton.addEventListener("click", function () {
+        changeButtonStyle(chocoButton, "#7D3C0A", "white");
+        loadImage("choco.png");
+      });
+
+      strawberryButton.addEventListener("click", function () {
+        changeButtonStyle(strawberryButton, "#FFC2C2", "white");
+        loadImage("strawberry.png");
+      });
+
+      whiteChocoButton.addEventListener("click", function () {
+        changeButtonStyle(whiteChocoButton, "#EDEBC5", "white");
+        loadImage("whitechoco.png");
+      });
+
+      greenTeaButton.addEventListener("click", function () {
+        changeButtonStyle(greenTeaButton, "#C1C890", "white");
+        loadImage("greentea.png");
+      });
+
+      blueberryButton.addEventListener("click", function () {
+        changeButtonStyle(blueberryButton, "#BCBED7", "white");
+        loadImage("blueberry.png");
+      });
+
+      function changeButtonStyle(button, backgroundColor, textColor) {
+        // 선택된 버튼의 스타일 변경
+        button.style.backgroundColor = backgroundColor;
+        button.style.color = textColor;
+
+        // 다른 버튼의 스타일 초기화
+        buttons.forEach((btn) => {
+          if (btn !== button) {
+            btn.style.backgroundColor = "#f7f7f7";
+            btn.style.color = "#000";
+          }
+        });
+      }
+
+      function loadImage(imageSrc) {
+        const newImage = document.createElement("img");
+        newImage.src = imageSrc;
+        newImage.style.position = "absolute";
+        newImage.style.zIndex = 1;
+        newImage.style.top = "0";
+        newImage.style.left = "0";
+        make1Image.style.position = "relative";
+        make1Image.innerHTML = ""; // 이전 이미지를 제거
+        make1Image.appendChild(newImage);
+      }
+
+      document
+        .getElementById("nextButton")
+        .addEventListener("click", function () {
+          window.location.href = "pepero_make2.html";
+        });
+    </script>
+  </body>
+</html>
