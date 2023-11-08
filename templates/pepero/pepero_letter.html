@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/letter.css">
+  <title>편지단계</title>
+
+  <style>
+  body {
+  font-family: "Noto Sans KR", sans-serif;
+  align-items: center;
+}
+
+.letter-form {
+  align-items: center;
+  position: absolute;
+  width: 390px;
+  height: 844px;
+  background-color: #faf9f5;
+  margin-left: 40%;
+}
+
+header {
+  padding-top: 70px;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  color: #4b2a0b;
+}
+
+h3 {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  color: #885c33;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border: 16px solid rgba(234, 222, 216, 1) !important;
+  border-radius: 20px;
+  background-color: white;
+  padding: 15px 10px;
+  font-size: 16px;
+  outline: none;
+  width: 299px;
+  height: 380px;
+  top: 42px;
+  left: 20px; 
+}
+
+#titleInput {
+  position: relative;
+  top:0;
+  color: rgba(75, 42, 11, 0.50);
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border:none;
+  border-right:0px;
+  border-top:0px;
+  border-left:0px;
+  border-bottom:0px;
+  width: 90%;
+  height: 20px;
+  padding: 10px;
+  padding-left: 20px;
+
+}
+
+
+
+#messageInput {
+  color: rgba(75, 42, 11, 0.50);
+  position: relative;
+  top: 20px; /* 필요에 따라 조정 */
+  width: 90%;
+  height: 300px; /* 필요에 따라 조정 */
+  padding: 10px;
+  padding-left: 20px;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  resize: none; /* 사용자가 크기를 조정하지 못하게 함 */
+  border:none;
+  border-right:0px;
+  border-top:0px;
+  border-left:0px;
+  border-bottom:0px;
+}
+
+.send-button {
+  color:white;
+  background-color:rgba(64, 31, 0, 1);
+  width: 240px;
+  height: 59px;
+  cursor: pointer;
+  position: relative;
+  top: 150px;
+  left: 75px;
+  border: none;
+}
+  </style>
+</head>
+<body>
+  <!--전체 화면을 포함하는 section 박스-->
+  <section class="letter-form">
+    <header>
+      <h1>빼빼로와 편지가 준비됐어요!</h1>
+      <h3>마음을 담은 빼빼로와 편지를 전송해볼까요?</h3>
+    </header>
+
+    <main>
+      <div class="input-wrapper">
+        <input type="text" placeholder="제목을 입력하세요" id="titleInput">
+        <textarea placeholder="내용을 입력하세요" id="messageInput" rows="4"></textarea>
+      </div>
+
+      <button onclick="window.open('loading-ing.html')" class="send-button">전송하기</button>
+    </main>
+    
+  </section>
+</body>
+</html>
+
+
