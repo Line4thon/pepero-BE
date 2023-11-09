@@ -6,8 +6,8 @@ import json
 # 첫 시작 화면 렌더
 def pepero_make_home_view(request):
     if request.method == 'GET':
-        return render(request, 'peperos/pepero.html')
-    return render(request, 'peperos/pepero.html')
+        return render(request, 'peperos/main.html')
+    return render(request, 'peperos/main.html')
 
 # 그..홈 화면에서 빼빼로 1단계 넘어가기 전 효과 뷰 렌더
 def pepero_make_start_view(request):
