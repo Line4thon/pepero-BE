@@ -4,4 +4,4 @@ from .models import Pepero
 
 @admin.register(Pepero)
 class UserModelAdmin(admin.ModelAdmin):
-    list_display = ('choco','sauce','deco','content')
+    list_display = ('choco','sauce','deco','title','content')
