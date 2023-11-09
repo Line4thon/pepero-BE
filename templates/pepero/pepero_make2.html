@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>빼빼로 만들기 2단계</title>
-  </head>
-
+{% extends 'base.html'%}
+    {% block title %}빼빼로 만들기 2단계{% endblock %}
+    {% load static %}
+    {% block content %}
   <!--css 파일-->
   <style>
     body {
@@ -141,7 +137,7 @@
       <div class="make2">
         <!--만든 빼빼로를 보여주는 화면을 포함하는 div 태그-->
         <div class="show">
-          <img src="pepero1.png" id="pepero1" />
+          <img src="img/pepero1.png" id="pepero1" />
           <div id="make2Image"></div>
         </div>
         <!--버튼을 옵션을 선택하는 화면을 포함하는 div 태그-->
@@ -182,27 +178,27 @@
 
       chocosyrupButton.addEventListener("click", function () {
         changeButtonStyle(chocosyrupButton, "#7D3C0A", "white");
-        loadImage("chocosyrup.png");
+        loadImage("img/chocosyrup.png");
       });
 
       strawberrysyrupButton.addEventListener("click", function () {
         changeButtonStyle(strawberrysyrupButton, "#FFC2C2", "white");
-        loadImage("strawberrysyrup.png");
+        loadImage("img/strawberrysyrup.png");
       });
 
       whiteChocosyrupButton.addEventListener("click", function () {
         changeButtonStyle(whiteChocosyrupButton, "#EDEBC5", "white");
-        loadImage("whitechocosyrup.png");
+        loadImage("img/whitechocosyrup.png");
       });
 
       greenTeasyrupButton.addEventListener("click", function () {
         changeButtonStyle(greenTeasyrupButton, "#C1C890", "white");
-        loadImage("greenteasyrup.png");
+        loadImage("img/greenteasyrup.png");
       });
 
       blueberryButton.addEventListener("click", function () {
         changeButtonStyle(blueberryButton, "#BCBED7", "white");
-        loadImage("blueberrysyrup.png");
+        loadImage("img/blueberrysyrup.png");
       });
 
       function changeButtonStyle(button, backgroundColor, textColor) {
@@ -237,4 +233,4 @@
         });
     </script>
   </body>
-</html>
+  {% endblock %}
