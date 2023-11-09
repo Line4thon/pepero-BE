@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView
+from django.shortcuts import render
 
-class Home(TemplateView):
-    template_name ='pepero:pepero.html'
+def main(request):
+    return render(request, 'pepero/pepero.html')
