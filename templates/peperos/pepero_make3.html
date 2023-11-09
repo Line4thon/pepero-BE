@@ -318,24 +318,24 @@
           chocoImage.src = "{% static 'assets/blueberry.png' %}";
         }
     });
-    document.addEventListener('DOMContentLoaded', function () {
-      const sauceImage = document.getElementById('sauceImage');
-      const selectedSauce = "{{ request.session.selected_csauce }}";
-      console.log(selectedSauce)
-      if (selectedSauce === '기본') {
-        sauceImage.src = "";
-      } else if (selectedSauce === '초코시럽') {
-        sauceImage.src = "{% static 'assets/chocosyrup.png' %}";
-      } else if (selectedSauce === '딸기시럽') {
-        sauceImage.src = "{% static 'assets/strawberrysyrup.png' %}";
-      } else if (selectedSauce === '화이트시럽') {
-        sauceImage.src = "{% static 'assets/whitechocosyrup.png' %}";
-      } else if (selectedSauce === '녹차시럽') {
-        sauceImage.src = "{% static 'assets/greenteasyrup.png' %}";
-      } else {
-        sauceImage.src = "{% static 'assets/blueberrysyrup.png' %}";
-      }
-  });
+      document.addEventListener('DOMContentLoaded', function () {
+          const sauceImage = document.getElementById('sauceImage');
+          const selectedSauce = "{{ request.session.selected_sauce }}";
+          console.log(selectedSauce)
+          if (selectedSauce === '기본') {
+            sauceImage.src = "";
+          } else if (selectedSauce === '초코시럽') {
+            sauceImage.src = "{% static 'assets/chocosyrup.png' %}";
+          } else if (selectedSauce === '딸기시럽') {
+            sauceImage.src = "{% static 'assets/strawberrysyrup.png' %}";
+          } else if (selectedSauce === '화이트시럽') {
+            sauceImage.src = "{% static 'assets/whitechocosyrup.png' %}";
+          } else if (selectedSauce === '녹차시럽') {
+            sauceImage.src = "{% static 'assets/greenteasyrup.png' %}";
+          } else if (selectedSauce ==="블루베리시럽") {
+            sauceImage.src = "{% static 'assets/blueberrysyrup.png' %}";
+          }
+      });
       
     </script>
   </body>

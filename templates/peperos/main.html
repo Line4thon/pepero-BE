@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+{% extends 'base.html'%}
+    {% block title %}메인 화면{% endblock %}
+    {% load static %}
+    {% block content %}
+  <!--css 파일-->
+  <style>
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+      align-items: center;
+    }
+
+    .main-form {
+      align-items: center;
+      position: relative;
+      width: 390px;
+      height: 844px;
+      background-color: #faf9f5;
+      margin-left: 40%;
+    }
+
+    .header {
+      padding-top: 70px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #text1 {
+      font-size: 30px;
+      font-weight: 600;
+      text-align: center;
+      color: #4b2a0b;
+    }
+
+    #text2 {
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      color: #885c33;
+    }
+
+    .make2 {
+      height: 480px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .pepero-show {
+      height: 480px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    #arrow1 {
+      border: none;
+      background-color: #faf9f5;
+      padding-left: 15px;
+      margin-top: -120px;
+    }
+
+    .pepero {
+      margin-left: -10px;
+    }
+
+    #main1,
+    #main2,
+    #main3,
+    #main4,
+    #main5 {
+      margin-left: 14px;
+      filter: drop-shadow(2px 2px 2px #000);
+    }
+
+    #arrow2 {
+      border: none;
+      background-color: #faf9f5;
+      padding-right: 15px;
+      margin-top: -120px;
+    }
+
+    .next {
+      margin-top: -55px;
+      align-items: center;
+    }
+    #make_pepero,
+    #watch_pepero {
+      align-items: center;
+      width: 250px;
+      height: 50px;
+      margin-bottom: 10px;
+      margin-left: 70px;
+      border-radius: 16px;
+      border: 1px solid;
+    }
+
+    #make_pepero {
+      background-color: #401f00;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    #watch_pepero {
+      background-color: #eaded8;
+      color: #401f00;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+    }
+
+    #blurry-background {
+      position: absolute;
+      top: 0;
+      margin-left: 670px;
+      width: 400px;
+      height: 844px;
+      background: rgba(0, 0, 0, 0.5);
+      filter: blur(5px);
+      z-index: 10;
+    }
+
+    #overlay-image {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+    }
+  </style>
+
+  <body>
+    <!--전체 화면을 포함하는 section 박스-->
+    <section class="main-form">
+      <!--header를 포함하는 div 태그-->
+      <div class="header">
+        <p id="text1">너에게 보내는 빼빼로</p>
+        <p id="text2">소중한 마음을 익명으로 보내주세요!</p>
+      </div>
+      <!--빼빼로를 보여주는 div 태그-->
+      <div class="pepero-show">
+        <button type="button" id="arrow1">
+          <img src="{% static 'assets/arrow1.png' %}" />
+        </button>
+        <div class="pepero">
+          <img src="{% static 'assets/main1.png' %}" id="main1" />
+          <img src="{% static 'assets/main2.png' %}" id="main2" />
+          <img src="{% static 'assets/main3.png' %}" id="main3" />
+          <img src="{% static 'assets/main4.png' %}" id="main4" />
+          <img src="{% static 'assets/main5.png' %}" id="main5" />
+        </div>
+        <button type="button" id="arrow2">
+          <img src="{% static 'assets/arrow2.png' %}" />
+        </button>
+      </div>
+
+      <!--버튼으로 옵션을 선택하는 화면을 보여주는 div 태그-->
+      <div class="next">
+        <button type="button" id="make_pepero">빼빼로 만들기</button>
+        <button type="button" id="watch_pepero">빼빼로 보러가기</button>
+      </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+      document
+        .getElementById("make_pepero")
+        .addEventListener("click", function () {
+          window.location.href = "{% url 'pepero:pepero_start' %}";
+        });
+
+      $(document).ready(function () {
+        // 버튼 클릭 시
+        $("#watch_pepero").click(function () {
+          console.log("버튼 클릭됨"); // 디버깅용 로그
+
+          // 블러 스타일 추가
+          $("body").append('<div id="blurry-background"></div>');
+
+          // 이미지 스타일 추가
+          $("body").append(
+            '<img id="overlay-image" src="img/img1.png" alt="Overlay Image" style="positon:fixed; top: 370px; left: 750px">'
+          );
+          $("body").append(
+            '<img id="overlay-image" src="img/letter.png" alt="Overlay Image 2" style="position: fixed; top:350px; left:885px;">'
+          );
+        });
+      });
+    </script>
+  </body>
+{% endblock %}
