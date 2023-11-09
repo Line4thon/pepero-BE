@@ -56,7 +56,8 @@
     #pepero2 {
       height: 477px;
       width: 40px;
-      padding-left: 10px;
+      padding-left: 8px;
+      padding-top:5px;
       position: absolute;
       z-index: 1;
       left: 100px;
@@ -127,6 +128,22 @@
       font-weight: 600;
       border: none;
     }
+    #chocoImage {
+      height: 370px;
+      width: 47px;
+      padding-left: 14px;
+      padding-bottom: 50px;
+      position: absolute;
+      z-index: 1;
+    }
+    #sauceImage {
+      height: 320px;
+      width: 28px;
+      padding-left: 18px;
+      padding-top:20px;
+      position: absolute;
+      z-index: 1;
+    }
   </style>
   <body>
     <!--전체 화면을 포함하는 section 박스-->
@@ -142,7 +159,9 @@
       <div class="make3">
         <!--만든 빼빼로를 보여주는 화면을 포함하는 div 태그-->
         <div class="show">
-          <img src="{% static 'assets/pepero2.png' %}" id="pepero2" />
+          <img src="{% static 'assets/pepero.png' %}" id="pepero2" />
+          <img src="" id ="chocoImage"/>
+          <img src="" id ="sauceImage"/>
           <div id="make3Image"></div>
         </div>
         <!--버튼을 옵션을 선택하는 화면을 포함하는 div 태그-->
@@ -280,6 +299,43 @@
             });
         }
       });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const chocoImage = document.getElementById('chocoImage');
+        const selectedChoco = "{{ request.session.selected_choco }}";
+        console.log(selectedChoco)
+        if (selectedChoco === '기본') {
+          chocoImage.src = "";
+        } else if (selectedChoco === '초코') {
+          chocoImage.src = "{% static 'assets/choco.png' %}";
+        } else if (selectedChoco === '딸기') {
+          chocoImage.src = "{% static 'assets/strawberry.png' %}";
+        } else if (selectedChoco === '화이트') {
+          chocoImage.src = "{% static 'assets/whitechoco.png' %}";
+        } else if (selectedChoco === '녹차') {
+          chocoImage.src = "{% static 'assets/greentea.png' %}";
+        } else {
+          chocoImage.src = "{% static 'assets/blueberry.png' %}";
+        }
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+      const sauceImage = document.getElementById('sauceImage');
+      const selectedSauce = "{{ request.session.selected_csauce }}";
+      console.log(selectedSauce)
+      if (selectedSauce === '기본') {
+        sauceImage.src = "";
+      } else if (selectedSauce === '초코시럽') {
+        sauceImage.src = "{% static 'assets/chocosyrup.png' %}";
+      } else if (selectedSauce === '딸기시럽') {
+        sauceImage.src = "{% static 'assets/strawberrysyrup.png' %}";
+      } else if (selectedSauce === '화이트시럽') {
+        sauceImage.src = "{% static 'assets/whitechocosyrup.png' %}";
+      } else if (selectedSauce === '녹차시럽') {
+        sauceImage.src = "{% static 'assets/greenteasyrup.png' %}";
+      } else {
+        sauceImage.src = "{% static 'assets/blueberrysyrup.png' %}";
+      }
+  });
       
     </script>
   </body>
