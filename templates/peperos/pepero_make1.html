@@ -255,11 +255,10 @@
               "X-CSRFToken": csrfToken,
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ selected_choco: selectedChoco }), // JSON 형식으로 데이터 전송
+            body: JSON.stringify({ selected_choco: selectedChoco }),
           })
             .then((response) => response.json())
             .then((data) => {
-              // POST 요청이 성공하면, 페이지를 이동합니다.
               window.location.href = "{% url 'pepero:pepero_sauce' %}";
             })
             .catch((error) => {
@@ -268,18 +267,16 @@
         } else {
           console.log(selected_choco)
           console.log(selected_choco)
-          // 선택한 초코가 없을 경우 기본값을 사용하여 POST 요청을 보냅니다.
           fetch("{% url 'pepero:pepero_choco' %}", {
             method: "POST",
             headers: {
               "X-CSRFToken": csrfToken,
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ selected_choco: '기본' }), // JSON 형식으로 데이터 전송
+            body: JSON.stringify({ selected_choco: '기본' }),
           })
             .then((response) => response.json())
             .then((data) => {
-              // POST 요청이 성공하면, 페이지를 이동합니다.
               window.location.href = "{% url 'pepero:pepero_sauce' %}";
             })
             .catch((error) => {
