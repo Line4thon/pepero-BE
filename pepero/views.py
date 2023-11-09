@@ -60,6 +60,15 @@ def pepero_make_deco_view(request):
         print("빼빼로 3단계 시작")
         return render(request, 'peperos/pepero_make3.html')
     elif request.method == 'POST':
+        try:
+            post_data = json.loads(request.body.decode('utf-8'))
+            selected_deco = post_data.get('selected_deco')
+            if selected_deco:
+                print("사용자 선택 데코 값 : "+selected_deco)
+                request.session['selected_deco'] = selected_deco
+                return JsonResponse({'message': 'Success'})
+        except json.JSONDecodeError as e:
+            return JsonResponse({'message': 'Error', 'error': str(e)})
         return render(request, 'peperos/pepero_letter.html')
 
     
@@ -68,14 +77,17 @@ def pepero_make_letter_view(request):
     if request.method == 'GET':
         print("1단계에서 선택한 값 체크 :" + request.session['selected_choco'])
         print("2단계에서 선택한 값 체크 :" + request.session['selected_sauce'])
+        print("3단계에서 선택한 값 체크 :" + request.session['selected_deco'])
         print("빼빼로 편지 쓰기 시작")
         return render(request, 'peperos/pepero_letter.html')
     elif request.method == 'POST':
-        selected_choco = request.session.get('selected_choco', '기본')
-        selected_sauce = request.session.get('selected_sauce', '기본')
-        selected_deco = request.session.get('selected_deco', '기본')
-        content = request.POST.get('content', '')
-        pepero = Pepero(choco=selected_choco, sauce=selected_sauce, deco=selected_deco, content=content)
+        selected_choco = request.session['selected_choco']
+        selected_sauce = request.session['selected_sauce']
+        selected_deco = request.session['selected_deco']
+        title = request.POST.get('title')
+        content = request.POST.get('message')
+        print(content)
+        pepero = Pepero(choco=selected_choco, sauce=selected_sauce, deco=selected_deco, title=title, content=content)
         pepero.save()
         print("빼빼로 편지 완성 확인")
         return render(request, 'peperos/loading-ing.html')

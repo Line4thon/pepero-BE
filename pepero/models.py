@@ -28,4 +28,5 @@ class Pepero(models.Model):
     sauce = models.TextField(verbose_name='소스',null=True, blank=True)
     deco = models.TextField(verbose_name='데코',null=True, blank=True)
     content = models.TextField(verbose_name='편지',null=True, blank=True) 
+    title = models.TextField(verbose_name="타이틀",null=True, blank=True )
     
