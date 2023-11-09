@@ -157,6 +157,7 @@
         </div>
 
     </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
       const chocosyrupButton = document.getElementById("chocosyrup");
       const strawberrysyrupButton = document.getElementById("strawberrysyrup");
@@ -235,21 +236,46 @@
         make2Image.appendChild(newImage);
       }
 
-      document.getElementById("nextButton").addEventListener("click", function () {
+      const csrfToken = "{{ csrf_token }}";
+      $("#nextButton").click(function () {
+        console.log(selectedSauce)
         if (selectedSauce) {
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-            const selectedChoco = urlParams.get("selected_choco");
-            const nextUrl = '{% url "pepero:pepero_deco" %}?selected_choco=' + selectedChoco + '&selected_sauce=' + selectedSauce;
-            window.location.href = nextUrl;
+          console.log(selectedSauce)
+          fetch("{% url 'pepero:pepero_sauce' %}", {
+            method: "POST",
+            headers: {
+              "X-CSRFToken": csrfToken,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ selected_sauce: selectedSauce }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              window.location.href = "{% url 'pepero:pepero_deco' %}";
+            })
+            .catch((error) => {
+              console.error("POST 요청 실패: ", error);
+            });
         } else {
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-            const selectedChoco = urlParams.get("selected_choco");
-            const nextUrl = '{% url "pepero:pepero_deco" %}?selected_choco=' + selectedChoco + '&selected_sauce=기본';
-            window.location.href = nextUrl;
+          console.log(selectedSauce)
+          console.log(selectedSauce)
+          fetch("{% url 'pepero:pepero_sauce' %}", {
+            method: "POST",
+            headers: {
+              "X-CSRFToken": csrfToken,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ selected_sauce: '기본' }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              window.location.href = "{% url 'pepero:pepero_deco' %}";
+            })
+            .catch((error) => {
+              console.error("POST 요청 실패: ", error);
+            });
         }
-    });
+      });
     
     </script>
   </body>
