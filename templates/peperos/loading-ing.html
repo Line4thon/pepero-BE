@@ -140,7 +140,7 @@
     });
       document.addEventListener('DOMContentLoaded', function () {
           const sauceImage = document.getElementById('sauceImage');
-          const selectedSauce = "{{ request.session.selected_csauce }}";
+          const selectedSauce = "{{ request.session.selected_sauce }}";
           console.log(selectedSauce)
           if (selectedSauce === '기본') {
             sauceImage.src = "";

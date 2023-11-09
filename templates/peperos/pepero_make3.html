@@ -320,7 +320,7 @@
     });
       document.addEventListener('DOMContentLoaded', function () {
           const sauceImage = document.getElementById('sauceImage');
-          const selectedSauce = "{{ request.session.selected_csauce }}";
+          const selectedSauce = "{{ request.session.selected_sauce }}";
           console.log(selectedSauce)
           if (selectedSauce === '기본') {
             sauceImage.src = "";
@@ -332,7 +332,7 @@
             sauceImage.src = "{% static 'assets/whitechocosyrup.png' %}";
           } else if (selectedSauce === '녹차시럽') {
             sauceImage.src = "{% static 'assets/greenteasyrup.png' %}";
-          } else {
+          } else if (selectedSauce ==="블루베리시럽") {
             sauceImage.src = "{% static 'assets/blueberrysyrup.png' %}";
           }
       });

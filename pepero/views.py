@@ -102,6 +102,6 @@ def pepero_make_ing_view(request):
 # 빼빼로 전송완료 뷰 ( 효과 )
 def pepero_make_end_view(request):
     if request.method == 'GET':
-        return render(request, 'peperos/loading-end.html')
-    return render(request, 'peperos/loading-end.html')
+        return render(request, 'peperos/main.html')
+    return render(request, 'peperos/main.html')
 
