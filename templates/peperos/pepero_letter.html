@@ -116,18 +116,22 @@ h3 {
 <body>
   <!--전체 화면을 포함하는 section 박스-->
   <section class="letter-form">
+
     <header>
       <h1>빼빼로와 편지가 준비됐어요!</h1>
       <h3>마음을 담은 빼빼로와 편지를 전송해볼까요?</h3>
     </header>
 
     <main>
-      <div class="input-wrapper">
-        <input type="text" placeholder="제목을 입력하세요" id="titleInput">
-        <textarea placeholder="내용을 입력하세요" id="messageInput" rows="4"></textarea>
-      </div>
 
-      <button onclick="window.open('{% url 'pepero:pepero_ing' %}')" class="send-button">전송하기</button>
+      <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input-wrapper">
+          <input type="text" placeholder="제목을 입력하세요" id="titleInput" name="title">
+          <textarea placeholder="내용을 입력하세요" id="messageInput" name="message" rows="4"></textarea> 
+        </div>
+        <button type="submit" class="send-button">전송하기</button>
+      </form>
     </main>
     
   </section>
