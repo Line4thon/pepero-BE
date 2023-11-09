@@ -111,7 +111,8 @@
         // 3000밀리초(3초) 후에 실행될 함수를 setTimeout을 이용하여 설정
         setTimeout(function () {
           // 편지 보관함으로 리다이렉트
-          window.location.href = "received.html";
+          window.location.href = "{% url 'pepero:pepero_home' %}";
+
         }, 3000);
       };
 
@@ -135,7 +136,7 @@
     });
       document.addEventListener('DOMContentLoaded', function () {
           const sauceImage = document.getElementById('sauceImage');
-          const selectedSauce = "{{ request.session.selected_csauce }}";
+          const selectedSauce = "{{ request.session.selected_sauce }}";
           console.log(selectedSauce)
           if (selectedSauce === '기본') {
             sauceImage.src = "";
