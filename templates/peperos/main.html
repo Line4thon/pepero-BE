@@ -181,10 +181,10 @@
 
           // 이미지 스타일 추가
           $("body").append(
-            '<img id="overlay-image" src="img/img1.png" alt="Overlay Image" style="positon:fixed; top: 370px; left: 750px">'
+            '<img id="overlay-image" src = "{% static 'assets/img1.png' %}" alt="Overlay Image" style="positon:fixed; top: 370px; left: 750px">'
           );
           $("body").append(
-            '<img id="overlay-image" src="img/letter.png" alt="Overlay Image 2" style="position: fixed; top:350px; left:885px;">'
+            '<img id="overlay-image" src = "{% static 'assets/letter.png' %}" alt="Overlay Image 2" style="position: fixed; top:350px; left:885px;">'
           );
         });
       });
