@@ -74,7 +74,7 @@
       </div>
       <div class="pepero-img">
         <!-- Replace the src attribute with the correct path to your image -->
-        <img src="img/pepero-letter1.png" alt="빼빼로 편지 이미지1" />
+        <img src="{% static 'assets/pepero-letter1.png' %}"  alt="빼빼로 편지 이미지1">
       </div>
     </section>
 
@@ -84,7 +84,7 @@
         // 3000밀리초(3초) 후에 실행될 함수를 setTimeout을 이용하여 설정
         setTimeout(function () {
           // 1단계 페이지로 리다이렉트
-          window.location.href = "pepero_make1.html";
+          window.location.href = '{% url 'pepero:pepero_choco' %}';
         }, 3000);
       };
     </script>

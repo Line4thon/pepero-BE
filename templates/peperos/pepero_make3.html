@@ -142,7 +142,7 @@
       <div class="make3">
         <!--만든 빼빼로를 보여주는 화면을 포함하는 div 태그-->
         <div class="show">
-          <img src="img/pepero2.png" id="pepero2" />
+          <img src="{% static 'assets/pepero2.png' %}" id="pepero2" />
           <div id="make3Image"></div>
         </div>
         <!--버튼을 옵션을 선택하는 화면을 포함하는 div 태그-->
@@ -183,27 +183,27 @@
 
       hartdecoButton.addEventListener("click", function () {
         changeButtonStyle(hartdecoButton, "#FF4A4A", "white");
-        loadImage("img/hartdeco.png");
+        loadImage("{% static 'assets/hartdeco.png' %}");
       });
 
       stardecoButton.addEventListener("click", function () {
         changeButtonStyle(stardecoButton, "#FFD80D", "white");
-        loadImage("img/stardeco.png");
+        loadImage("{% static 'assets/stardeco.png' %}");
       });
 
       almonddecoButton.addEventListener("click", function () {
         changeButtonStyle(almonddecoButton, "#F5D594", "white");
-        loadImage("img/almonddeco.png");
+        loadImage("{% static 'assets/almonddeco.png' %}");
       });
 
       oreodecoButton.addEventListener("click", function () {
         changeButtonStyle(oreodecoButton, "#401F00", "white");
-        loadImage("img/oreodeco.png");
+        loadImage("{% static 'assets/oreodeco.png' %}");
       });
 
       sprinklesdecoButton.addEventListener("click", function () {
         changeButtonStyle(sprinklesdecoButton, "#62CBFF", "white");
-        loadImage("img/sprinklesdeco.png");
+        loadImage("{% static 'assets/sprinklesdeco.png' %}");
       });
 
       function changeButtonStyle(button, backgroundColor, textColor) {
@@ -234,7 +234,7 @@
       document
         .getElementById("nextButton")
         .addEventListener("click", function () {
-          window.location.href = "pepero_letter.html";
+          window.location.href = '{% url 'pepero:pepero_letter' %}';
         });
     </script>
   </body>
