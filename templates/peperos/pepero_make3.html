@@ -155,10 +155,10 @@
         </div>
       </div>
       <!--다음 과정을 선택할 버튼을 포함하는 div 태그-->
-      <div class="next">
-        <button type="button" class="return">원상태로</button>
-        <button type="button" class="letter" id="nextButton">다음 단계</button>
-      </div>
+        <div class="next">
+          <button type="button" class="return">원상태로</button>
+          <button type="button" class="letter" id="nextButton">다음 단계</button>
+        </div>
     </section>
     <script type="text/javascript">
       const hartdecoButton = document.getElementById("hartdeco");
@@ -168,6 +168,7 @@
       const sprinklesdecoButton = document.getElementById("sprinklesdeco");
       const make3Image = document.getElementById("make3Image");
 
+
       const decobuttons = [
         hartdecoButton,
         stardecoButton,
@@ -176,32 +177,39 @@
         sprinklesdecoButton,
       ];
 
+      
       decobuttons.forEach((button) => {
         button.style.backgroundColor = "#f7f7f7";
         button.style.color = "#000";
       });
 
+      let selectedDeco = null;
       hartdecoButton.addEventListener("click", function () {
+        selectedDeco="하트"
         changeButtonStyle(hartdecoButton, "#FF4A4A", "white");
         loadImage("{% static 'assets/hartdeco.png' %}");
       });
 
       stardecoButton.addEventListener("click", function () {
+        selectedDeco="별"
         changeButtonStyle(stardecoButton, "#FFD80D", "white");
         loadImage("{% static 'assets/stardeco.png' %}");
       });
 
       almonddecoButton.addEventListener("click", function () {
+        selectedDeco="아몬드"
         changeButtonStyle(almonddecoButton, "#F5D594", "white");
         loadImage("{% static 'assets/almonddeco.png' %}");
       });
 
       oreodecoButton.addEventListener("click", function () {
+        selectedDeco="오레오"
         changeButtonStyle(oreodecoButton, "#401F00", "white");
         loadImage("{% static 'assets/oreodeco.png' %}");
       });
 
       sprinklesdecoButton.addEventListener("click", function () {
+        selectedDeco="스프링클"
         changeButtonStyle(sprinklesdecoButton, "#62CBFF", "white");
         loadImage("{% static 'assets/sprinklesdeco.png' %}");
       });
@@ -232,10 +240,21 @@
       }
 
       document
-        .getElementById("nextButton")
-        .addEventListener("click", function () {
-          window.location.href = '{% url 'pepero:pepero_letter' %}';
-        });
+      .getElementById("nextButton")
+      .addEventListener("click", function () {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const selectedChoco = urlParams.get("selected_choco");
+        const selectedSauce = urlParams.get("selected_sauce");
+        if(selectedDeco){
+          const nextUrl = '{% url "pepero:pepero_letter" %}?selected_choco=' + selectedChoco + '&selected_sauce=' + selectedSauce + '&selected_deco=' + selectedDeco;
+          window.location.href = nextUrl;
+        }else{
+          const nextUrl = '{% url "pepero:pepero_letter" %}?selected_choco=' + selectedChoco + '&selected_sauce=' + selectedSauce + '&selected_deco=기본';
+          window.location.href = nextUrl;
+        }
+      });
+      
     </script>
   </body>
   {% endblock %}

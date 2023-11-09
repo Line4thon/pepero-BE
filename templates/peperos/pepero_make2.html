@@ -150,10 +150,12 @@
         </div>
       </div>
       <!--다음 과정을 선택할 버튼을 포함하는 div 태그-->
-      <div class="next">
-        <button type="button" class="return">원상태로</button>
-        <button type="button" class="make3" id="nextButton">다음 단계</button>
-      </div>
+
+        <div class="next">
+          <button type="button" class="return">원상태로</button>
+          <button type="submit" class="make3" id="nextButton">다음 단계</button>
+        </div>
+
     </section>
     <script type="text/javascript">
       const chocosyrupButton = document.getElementById("chocosyrup");
@@ -171,32 +173,39 @@
         blueberryButton,
       ];
 
+      let selectedSauce = null;
+
       syrupbuttons.forEach((button) => {
         button.style.backgroundColor = "#f7f7f7";
         button.style.color = "#000";
       });
 
       chocosyrupButton.addEventListener("click", function () {
+        selectedSauce="초코시럽"
         changeButtonStyle(chocosyrupButton, "#7D3C0A", "white");
         loadImage("{% static 'assets/chocosyrup.png' %}");
       });
 
       strawberrysyrupButton.addEventListener("click", function () {
+        selectedSauce="딸기시럽"
         changeButtonStyle(strawberrysyrupButton, "#FFC2C2", "white");
         loadImage("{% static 'assets/strawberrysyrup.png' %}");
       });
 
       whiteChocosyrupButton.addEventListener("click", function () {
+        selectedSauce="화이트시럽"
         changeButtonStyle(whiteChocosyrupButton, "#EDEBC5", "white");
         loadImage("{% static 'assets/whitechocosyrup.png' %}");
       });
 
       greenTeasyrupButton.addEventListener("click", function () {
+        selectedSauce="녹차시럽"
         changeButtonStyle(greenTeasyrupButton, "#C1C890", "white");
         loadImage("{% static 'assets/greenteasyrup.png' %}");
       });
 
       blueberryButton.addEventListener("click", function () {
+        selectedSauce="블루베리시럽"
         changeButtonStyle(blueberryButton, "#BCBED7", "white");
         loadImage("{% static 'assets/blueberrysyrup.png' %}");
       });
@@ -226,11 +235,22 @@
         make2Image.appendChild(newImage);
       }
 
-      document
-        .getElementById("nextButton")
-        .addEventListener("click", function () {
-          window.location.href = '{% url 'pepero:pepero_deco' %}';
-        });
+      document.getElementById("nextButton").addEventListener("click", function () {
+        if (selectedSauce) {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const selectedChoco = urlParams.get("selected_choco");
+            const nextUrl = '{% url "pepero:pepero_deco" %}?selected_choco=' + selectedChoco + '&selected_sauce=' + selectedSauce;
+            window.location.href = nextUrl;
+        } else {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const selectedChoco = urlParams.get("selected_choco");
+            const nextUrl = '{% url "pepero:pepero_deco" %}?selected_choco=' + selectedChoco + '&selected_sauce=기본';
+            window.location.href = nextUrl;
+        }
+    });
+    
     </script>
   </body>
   {% endblock %}
