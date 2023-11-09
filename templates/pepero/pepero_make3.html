@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>빼빼로 만들기 3단계</title>
-  </head>
+{% extends 'base.html'%}
+    {% block title %}빼빼로 만들기 3단계{% endblock %}
+    {% load static %}
+    {% block content %}
 
   <!--css 파일-->
   <style>
@@ -137,13 +134,15 @@
       <!--header를 포함하는 div 태그-->
       <div class="header">
         <p id="text1">3단계 : 빼빼로 토핑하기!</p>
-        <p id="text2">어떤 토핑을 사용할까요? 버튼을 눌러 선택해주세요!</p>
+        <p id="text2">
+          어떤 토핑을 사용할까요? <br />버튼을 눌러 선택해주세요!
+        </p>
       </div>
       <!--빼빼로를 만드는 화면을 포함하는 div 태그-->
       <div class="make3">
         <!--만든 빼빼로를 보여주는 화면을 포함하는 div 태그-->
         <div class="show">
-          <img src="pepero2.png" id="pepero2" />
+          <img src="img/pepero2.png" id="pepero2" />
           <div id="make3Image"></div>
         </div>
         <!--버튼을 옵션을 선택하는 화면을 포함하는 div 태그-->
@@ -184,27 +183,27 @@
 
       hartdecoButton.addEventListener("click", function () {
         changeButtonStyle(hartdecoButton, "#FF4A4A", "white");
-        loadImage("hartdeco.png");
+        loadImage("img/hartdeco.png");
       });
 
       stardecoButton.addEventListener("click", function () {
         changeButtonStyle(stardecoButton, "#FFD80D", "white");
-        loadImage("stardeco.png");
+        loadImage("img/stardeco.png");
       });
 
       almonddecoButton.addEventListener("click", function () {
         changeButtonStyle(almonddecoButton, "#F5D594", "white");
-        loadImage("almonddeco.png");
+        loadImage("img/almonddeco.png");
       });
 
       oreodecoButton.addEventListener("click", function () {
         changeButtonStyle(oreodecoButton, "#401F00", "white");
-        loadImage("oreodeco.png");
+        loadImage("img/oreodeco.png");
       });
 
       sprinklesdecoButton.addEventListener("click", function () {
         changeButtonStyle(sprinklesdecoButton, "#62CBFF", "white");
-        loadImage("sprinklesdeco.png");
+        loadImage("img/sprinklesdeco.png");
       });
 
       function changeButtonStyle(button, backgroundColor, textColor) {
@@ -225,7 +224,7 @@
         newImage.src = imageSrc;
         newImage.style.position = "absolute";
         newImage.style.zIndex = 1;
-        newImage.style.top = "0";
+        newImage.style.top = "-15px";
         newImage.style.left = "0";
         make3Image.style.position = "relative";
         make3Image.innerHTML = "";
@@ -239,4 +238,4 @@
         });
     </script>
   </body>
-</html>
+  {% endblock %}
