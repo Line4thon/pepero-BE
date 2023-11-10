@@ -5,17 +5,25 @@
   <!--css 파일-->
   <style>
     body {
+      /* font-family: "Noto Sans KR", sans-serif;
+      align-items: center; */
+
       font-family: "Noto Sans KR", sans-serif;
       align-items: center;
+      background-color: #faf9f5;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      height: 100vh;
     }
 
     .make1-form {
-      align-items: center;
-      position: absolute;
       width: 390px;
       height: 844px;
-      background-color: #faf9f5;
-      margin-left: 40%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* justify-content: space-between; */
     }
 
     .header {
@@ -41,9 +49,9 @@
     .make1 {
       height: 480px;
       display: flex;
-      justify-content: space-between;
+      /* justify-content: space-between; */
       width: 100%;
-      margin-top: 10px;
+      margin-top: 30px;
     }
 
     .show {
@@ -150,13 +158,10 @@
         </div>
       </div>
       <!--다음 과정을 선택할 버튼을 포함하는 div 태그-->
-        
           <div class="next">
-            <button type="button" class="return">원상태로</button>
+            <button type="button" class="return">이전 단계</button>
             <button type="submit" class="make2" id="nextButton">다음 단계</button>
           </div>
-
-
     </section>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
