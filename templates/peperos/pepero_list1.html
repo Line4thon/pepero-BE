@@ -8,18 +8,11 @@
 
 
     {% for list in pepero_lists %}
-        <a href="">
+        <a href="{% url 'pepero:pepero_detail' list.id %}">
             <img id="make_pepero" src = "{% static 'assets/letterOnly.png' %}">
             {{ list.title }}
+            {{ list.id }}
         </a>
     {% endfor %}
-
-    <script type="text/javascript">
-        document
-            .getElementById("make_pepero")
-            .addEventListener("click", function () {
-            window.location.href = "{% url 'pepero:pepero_detail' %}";
-        });
-    </script>
 
 {% endblock %}

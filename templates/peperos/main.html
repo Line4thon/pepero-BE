@@ -160,7 +160,10 @@
       <!--버튼으로 옵션을 선택하는 화면을 보여주는 div 태그-->
       <div class="next">
         <button type="button" id="make_pepero">빼빼로 만들기</button>
-        <button type="button" id="watch_pepero">빼빼로 보러가기</button>
+        <!--<button type="button" id="watch_pepero">빼빼로 보러가기</button> -->
+        <button type="button" id="watch_pepero">
+          <a href="{% url 'pepero:pepero_list' %}">빼빼로 보러가기</a>
+        </button>
       </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -170,24 +173,27 @@
         .addEventListener("click", function () {
           window.location.href = "{% url 'pepero:pepero_start' %}";
         });
-
-      $(document).ready(function () {
-        // 버튼 클릭 시
-        $("#watch_pepero").click(function () {
-          console.log("버튼 클릭됨"); // 디버깅용 로그
-
-          // 블러 스타일 추가
-          $("body").append('<div id="blurry-background"></div>');
-
-          // 이미지 스타일 추가
-          $("body").append(
-            '<img id="overlay-image" src = "{% static 'assets/img1.png' %}" alt="Overlay Image" style="positon:fixed; top: 370px; left: 750px">'
-          );
-          $("body").append(
-            '<img id="overlay-image" src = "{% static 'assets/letter.png' %}" alt="Overlay Image 2" style="position: fixed; top:350px; left:885px;">'
-          );
-        });
-      });
+        
+        /*
+          $(document).ready(function () {
+            // 버튼 클릭 시
+            $("#watch_pepero").click(function () {
+              console.log("버튼 클릭됨"); // 디버깅용 로그
+    
+              // 블러 스타일 추가
+              $("body").append('<div id="blurry-background"></div>');
+    
+              // 이미지 스타일 추가
+              $("body").append(
+                '<img id="overlay-image" src = "{% static 'assets/img1.png' %}" alt="Overlay Image" style="positon:fixed; top: 370px; left: 750px">'
+              );
+              $("body").append(
+                '<img id="overlay-image" src = "{% static 'assets/letter.png' %}" alt="Overlay Image 2" style="position: fixed; top:350px; left:885px;">'
+              );
+            });
+          });
+        */
+      
     </script>
   </body>
 {% endblock %}
