@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from .models import Pepero
 import json
@@ -105,3 +105,15 @@ def pepero_make_end_view(request):
         return render(request, 'peperos/loading-end.html')
     return render(request, 'peperos/main.html')
 
+# 빼빼로 리스트
+def pepero_letter_list(request):
+    pepero_lists = Pepero.objects.all()
+    return render(request, 'peperos/pepero_list1.html', {'pepero_lists': pepero_lists})
+    # return render(request, 'peperos/pepero_list1.html')
+
+# 빼빼로 디테일
+# 몇 번째(id) 편지인지 인자로 받음
+def pepero_letter_detail(request, letter_id):
+    # letter_detail = get_object_or_404(Pepero, pk=letter_id)
+    # return render(request, 'peperos/pepero_detail1.html', {'letter_detail':letter_detail})
+    return render(request, 'peperos/pepero_detail1.html')

@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+    {% block title %}메인 화면{% endblock %}
+    {% load static %}
+    {% block content %}
+    
+    {% comment %} <img id="make_pepero" src = "{% static 'assets/letterOnly.png' %}"> {% endcomment %}
+
+
+
+    {% for list in pepero_lists %}
+        <a href="">
+            <img id="make_pepero" src = "{% static 'assets/letterOnly.png' %}">
+            {{ list.title }}
+        </a>
+    {% endfor %}
+
+    <script type="text/javascript">
+        document
+            .getElementById("make_pepero")
+            .addEventListener("click", function () {
+            window.location.href = "{% url 'pepero:pepero_detail' %}";
+        });
+    </script>
+
+{% endblock %}
