@@ -1,0 +1,206 @@
+    {% extends 'base.html'%}
+        {% block title %}빼빼로 단계 1단계{% endblock %}
+        {% load static %}
+        {% block content %}
+    <!--css 파일-->
+    <style>
+        body {
+            font-family: "Noto Sans KR", sans-serif;
+            background-color: #faf9f5;
+            display: flex;
+            justify-content: center;
+            align-items:center;
+            flex-direction: column; 
+            min-height: 100vh;
+            overflow: hidden;  
+        }
+
+        .list-form {
+            width: 390px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .list {
+            overflow-y: auto;
+            width: 80%;
+            height: 500px;
+            background-color: #decab9;
+            border-radius: 10px; 
+            display: flex;
+            flex-wrap: wrap; /* 필요에 따라 wrap 속성을 추가하여 행이 넘칠 경우 줄 바꿈 */
+            justify-content: space-between;
+            overflow-x: hidden
+        }
+
+        .list::-webkit-scrollbar {
+            width: 10px; 
+        }
+    
+        .list::-webkit-scrollbar-thumb {
+            background-color: #401f00; /* 스크롤바 색상 설정 */
+            border-radius: 5px; /* 스크롤바 모서리를 둥글게 만듭니다. */
+        }
+
+        .header {
+            width:80%;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #text1 {
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            color: #4b2a0b;
+            margin: 0 auto;
+        }
+
+        #text2 {
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            color: #885c33;
+        }
+        
+        .next {
+            display: flex;
+            justify-content: space-between;
+            width: 70%; 
+            margin: 0 auto; 
+        }
+
+        .return{
+            width: 120px;
+            height: 44px;
+            margin-top: 5px;
+            border-radius: 16px;
+            border: 1px solid;
+        }
+
+        .return {
+            background-color: #401f00;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .pepero-img {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: rotate(-15deg); 
+            width: 30%;
+            position: relative;
+            margin: 5% auto;
+        }
+    
+        .pepero-img img {
+            width: 8px; 
+            margin-left:10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .pepero-img a {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    
+        #pepero {
+            position: absolute;
+            z-index: 2;
+        }
+    
+        #chocoImage {
+            position: absolute;
+            z-index: 3;
+        }
+        
+        #decoImage {
+            position: absolute;
+            
+            z-index: 4;
+        }
+        
+        #sauceImage {
+            position: absolute;
+
+            z-index: 5;
+            
+        }
+        #letter{
+            margin-top: 5vw;
+            margin-left: 5vw;
+            
+        }
+
+        #letterImg{
+            transform: rotate(15deg);  
+            width: 100px;
+            left: 10%;
+            top: 50%;
+        }
+        
+    </style>
+    <body>
+        <!--전체 화면을 포함하는 section 박스-->
+        <section class="list-form">
+        <!--header를 포함하는 div 태그-->
+        <div class="header">
+            <p id="text1">어떤 빼빼로들이 도착했을까요?</p>
+            <p id="text2">
+                도착한 마음들을 확인해주세요!
+            </p>
+        </div>
+        <!--빼빼로 list div 태그-->
+        <div class="list">
+            {% for list in pepero_lists %}
+                <div class="pepero-img">
+                    <a href="{% url 'pepero:pepero_detail' list.id %}">
+                        <img id="letterImg" src="{% static 'assets/letterImg.png' %}">
+                        <img src="{% static 'assets/pepero.png' %}" id="pepero">
+                        <!-- 이미지 속성 설정 -->
+                        <img src="{% if list.choco == '기본' %}{% static 'assets/pepero.png' %}
+                            {% elif list.choco == '초코' %}{% static 'assets/choco.png' %}
+                            {% elif list.choco == '딸기' %}{% static 'assets/strawberry.png' %}
+                            {% elif list.choco == '화이트' %}{% static 'assets/whitechoco.png' %}
+                            {% elif list.choco == '녹차' %}{% static 'assets/greentea.png' %}
+                            {% else %}{% static 'assets/blueberry.png' %}{% endif %}" id="chocoImage"/>
+                        <!-- 이미지 속성 설정 -->
+                        <img src="{% if list.sauce == '기본' %}
+                            {% elif list.sauce == '초코시럽' %}{% static 'assets/chocosyrup.png' %}
+                            {% elif list.sauce == '딸기시럽' %}{% static 'assets/strawberrysyrup.png' %}
+                            {% elif list.sauce == '화이트시럽' %}{% static 'assets/whitechocosyrup.png' %}
+                            {% elif list.sauce == '녹차시럽' %}{% static 'assets/greenteasyrup.png' %}
+                            {% else %}{% static 'assets/blueberrysyrup.png' %}{% endif %}" id="sauceImage"/>
+                        <!-- 이미지 속성 설정 -->
+                        <img src="{% if list.deco == '기본' %}
+                            {% elif list.deco == '아몬드' %}{% static 'assets/almonddeco.png' %}
+                            {% elif list.deco == '오레오' %}{% static 'assets/oreodeco.png' %}
+                            {% elif list.deco == '하트' %}{% static 'assets/hartdeco.png' %}
+                            {% elif list.deco == '별' %}{% static 'assets/stardeco.png' %}
+                            {% else %}{% static 'assets/sprinklesdeco.png' %}{% endif %}" id="decoImage"/>
+                        {% comment %} {{ list.title }} {% endcomment %}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <!--다음 과정을 선택할 버튼을 포함하는 div 태그-->
+            <div class="next">
+                <button type="button" class="return" id="beforeButton">이전 단계</button>
+            </div>
+        </section>
+        
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+    document
+        .getElementById("beforeButton")
+        .addEventListener("click", function () {
+        window.location.href = "{% url 'pepero:pepero_home' %}";
+        });
+    </script>
+</body>
+    {% endblock %}
