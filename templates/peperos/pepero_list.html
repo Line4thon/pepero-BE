@@ -1,5 +1,5 @@
     {% extends 'base.html'%}
-        {% block title %}빼빼로 단계 1단계{% endblock %}
+        {% block title %}빼빼로 리스트{% endblock %}
         {% load static %}
         {% block content %}
     <!--css 파일-->
@@ -143,6 +143,43 @@
             left: 10%;
             top: 50%;
         }
+        .main-button {
+            color: white;
+            background-color: rgba(64, 31, 0, 1);
+            flex-shrink: 0;
+            width: 250px;
+            height: 50px;
+            cursor: pointer;
+            
+            margin-top: 50px;
+            border: none;
+            border-radius: 20px;
+            color: var(--mainWH, #fff);
+            text-align: center;
+            font-family: Pretendard;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+        .letter-button {
+            color: white;
+            background-color: #EADED8;
+            flex-shrink: 0;
+            width: 250px;
+            height: 50px;
+            cursor: pointer;
+            margin-top: 10px;
+            border: none;
+            border-radius: 20px;
+            color: rgba(64, 31, 0, 1);
+            text-align: center;
+            font-family: Pretendard;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
         
     </style>
     <body>
@@ -189,18 +226,16 @@
             {% endfor %}
         </div>
         <!--다음 과정을 선택할 버튼을 포함하는 div 태그-->
-            <div class="next">
-                <button type="button" class="return" id="beforeButton">이전 단계</button>
-            </div>
+            
+                <button onclick="window.open('{% url 'pepero:pepero_home' %}', '_blank')" class="main-button">
+                    메인 화면으로
+                </button>
+                <button onclick="window.open('{% url 'pepero:pepero_list' %}', '_blank')" class="letter-button">
+                    하나씩 보기
+                </button>
+
         </section>
         
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript">
-    document
-        .getElementById("beforeButton")
-        .addEventListener("click", function () {
-        window.location.href = "{% url 'pepero:pepero_home' %}";
-        });
-    </script>
 </body>
     {% endblock %}

@@ -142,6 +142,26 @@
       font-weight: 600;
       line-height: normal;
     }
+    .letter-button {
+        color: white;
+        background-color: #EADED8;
+        flex-shrink: 0;
+        width: 250px;
+        height: 50px;
+        cursor: pointer;
+        position: relative;
+        top: 15px;
+        border: none;
+        border-radius: 20px;
+        color: rgba(64, 31, 0, 1);
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+    
   </style>
     <section class="pepero-form">
         <header>
@@ -168,18 +188,20 @@
                                     {% endif %}" class="choco-image" id="chocoImage"/>
 
                                     <img src="{% if list.sauce == '기본' %}
-                                    {% elif pepero.sauce == '초코시럽' %}{% static 'assets/chocosyrup.png' %}
-                                    {% elif pepero.sauce == '딸기시럽' %}{% static 'assets/strawberrysyrup.png' %}
-                                    {% elif pepero.sauce == '화이트시럽' %}{% static 'assets/whitechocosyrup.png' %}
-                                    {% elif pepero.sauce == '녹차시럽' %}{% static 'assets/greenteasyrup.png' %}
-                                    {% else %}{% static 'assets/blueberrysyrup.png' %}{% endif %}" class="sauce-image"  id="sauceImage"/>
+                                        {% elif pepero.sauce == '초코시럽' %}{% static 'assets/chocosyrup.png' %}
+                                        {% elif pepero.sauce == '딸기시럽' %}{% static 'assets/strawberrysyrup.png' %}
+                                        {% elif pepero.sauce == '화이트시럽' %}{% static 'assets/whitechocosyrup.png' %}
+                                        {% elif pepero.sauce == '녹차시럽' %}{% static 'assets/greenteasyrup.png' %}
+                                        {% else %}{% static 'assets/blueberrysyrup.png' %}
+                                        {% endif %}" class="sauce-image"  id="sauceImage"/>
 
                                     <img src="{% if pepero.deco == '기본' %}
-                                    {% elif pepero.deco == '아몬드' %}{% static 'assets/almonddeco.png' %}
-                                    {% elif pepero.deco == '오레오' %}{% static 'assets/oreodeco.png' %}
-                                    {% elif pepero.deco == '하트' %}{% static 'assets/hartdeco.png' %}
-                                    {% elif pepero.deco == '별' %}{% static 'assets/stardeco.png' %}
-                                    {% else %}{% static 'assets/sprinklesdeco.png' %}{% endif %}" class="deco-image" id="decoImage"/>
+                                        {% elif pepero.deco == '아몬드' %}{% static 'assets/almonddeco.png' %}
+                                        {% elif pepero.deco == '오레오' %}{% static 'assets/oreodeco.png' %}
+                                        {% elif pepero.deco == '하트' %}{% static 'assets/hartdeco.png' %}
+                                        {% elif pepero.deco == '별' %}{% static 'assets/stardeco.png' %}
+                                        {% else %}{% static 'assets/sprinklesdeco.png' %}
+                                        {% endif %}" class="deco-image" id="decoImage"/>
                         </a>
                     </div>
                 {% endfor %}
@@ -190,6 +212,9 @@
 
         <button onclick="window.open('{% url 'pepero:pepero_home' %}', '_blank')" class="main-button">
             메인 화면으로
+        </button>
+        <button onclick="window.open('{% url 'pepero:letters_list' %}', '_blank')" class="letter-button">
+            한눈에 보기
         </button>
         
         </section>
