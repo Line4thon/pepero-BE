@@ -13,27 +13,22 @@
       }
       body {
         font-family: "Noto Sans KR", sans-serif;
-        align-items: center;
         background-color: #faf9f5;
-        margin: 0;
-        display: flex;
-        justify-content: center;
+        
         height: 100vh;
+        overflow: hidden; 
       }
 
       .main-form {
-        width: 390px;
-        height: 844px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
+        margin: 0 auto;
       }
 
       .header {
-        text-align: center;
-        position: relative;
-        top: 50px;
+        align-items: center;
+      justify-content: center;
       }
 
       #text1 {
@@ -111,7 +106,7 @@
           window.location.href = "{% url 'pepero:pepero_home' %}";
 
         }, 2000);
-      };
+      }; 
 
       document.addEventListener('DOMContentLoaded', function () {
         const chocoImage = document.getElementById('chocoImage');
