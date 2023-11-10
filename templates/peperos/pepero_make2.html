@@ -6,24 +6,24 @@
   <style>
     body {
       font-family: "Noto Sans KR", sans-serif;
-      align-items: center;
       background-color: #faf9f5;
-      margin: 0;
       display: flex;
       justify-content: center;
-      height: 100vh;
+      align-items:center;
+      flex-direction: column; 
+      min-height: 100vh;
+      overflow: hidden;  
     }
 
     .make2-form {
       width: 390px;
-      height: 844px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
     .header {
-      padding-top: 70px;
+      width:70%;
       align-items: center;
       justify-content: center;
     }
@@ -33,6 +33,7 @@
       font-weight: 600;
       text-align: center;
       color: #4b2a0b;
+      margin: 0 auto;
     }
 
     #text2 {
@@ -43,50 +44,26 @@
     }
 
     .make2 {
-      height: 480px;
+      width:60%;
       display: flex;
-      width: 100%;
-      margin-top: 10px;
+      justify-content: center;
+      margin: 0 auto;
     }
 
     .show {
-      margin-left: 80px;
       width: 48%;
       padding: 10px;
-    }
-
-    #pepero1 {
-      height: 477px;
-      width: 40px;
-      padding-left: 10px;
-      position: absolute;
-      
-    }
-    #chocoImage {
-      height: 370px;
-      width: 47px;
-      padding-left: 6px;
-      position: absolute;
-      z-index: 1;
-    }
-
-    #make2Image {
+      margin: 0 auto;
+      display: flex;
+      justify-content: center; 
+      align-items: center;
       position: relative;
-      margin-left: 15px;
-      margin-top: 15px;
     }
 
-    #make2Image.img {
-      position: absoulute;
-      z-index: 2;
-      top: 0;
-      left: 0;
-    }
     .option {
       width: 48%;
       padding: 10px;
-      padding-top: 5px;
-      margin-right: 35px;
+      margin: auto;
     }
 
     .option button {
@@ -101,12 +78,37 @@
       border: 1px solid #cbcbcb;
     }
 
+    #pepero1 {
+      height: 477px;
+      width: 40px;
+      position: absolute;
+      
+    }
+    #chocoImage {
+      height: 370px;
+      width: 47px;
+      padding-left: 6px;
+      position: absolute;
+      z-index: 1;
+    }
+
+    #make2Image {
+      margin: auto;
+      margin-right:65px;
+      height: 500px; 
+    }
+
+    #make2Image.img {
+      position: absoulute;
+      z-index: 2;
+    }
+    
+
     .next {
-      width: 100%;
-      padding-top: 70px;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      justify-content: space-between;
+      width: 70%; 
+      margin: 0 auto; 
     }
 
     .return,
@@ -114,13 +116,11 @@
       width: 120px;
       height: 44px;
       margin-top: 5px;
-      margin-left: 30px;
       border-radius: 16px;
       border: 1px solid;
     }
 
     .return {
-      margin-left: 5px;
       background-color: #401f00;
       color: white;
       font-size: 15px;
