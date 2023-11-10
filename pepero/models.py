@@ -31,7 +31,7 @@ class Pepero(models.Model):
     content = models.TextField(verbose_name='편지',null=True, blank=True) 
     title = models.TextField(verbose_name="타이틀",null=True, blank=True )
     
-    created_at = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
     def __str__(self):

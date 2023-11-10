@@ -117,3 +117,9 @@ def pepero_letter_detail(request, letter_id):
     letter_detail = get_object_or_404(Pepero, pk=letter_id)
     return render(request, 'peperos/pepero_detail.html', {'letter_detail':letter_detail})
     # return render(request, 'peperos/pepero_detail1.html')
+    
+
+# 빼빼로 편지 리스트
+def pepero_letters_list(request):
+    pepero_lists = Pepero.objects.all().order_by('-created_at')
+    return render(request, 'peperos/pepero_list.html', {'pepero_lists': pepero_lists})
