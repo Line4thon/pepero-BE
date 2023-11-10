@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 CHOCO = (
     ('초코','초코'),
@@ -29,6 +30,9 @@ class Pepero(models.Model):
     deco = models.TextField(verbose_name='데코',null=True, blank=True)
     content = models.TextField(verbose_name='편지',null=True, blank=True) 
     title = models.TextField(verbose_name="타이틀",null=True, blank=True )
+    
+    created_at = models.DateTimeField(default=timezone.now)
+
 
     def __str__(self):
         return self.title
