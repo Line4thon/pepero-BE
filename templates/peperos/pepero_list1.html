@@ -1,90 +1,196 @@
 {% extends 'base.html' %}
-{% block title %}메인 화면{% endblock %}
+{% block title %}빼빼로 리스트1{% endblock %}
 {% load static %}
 {% block content %}
-    
+
 <style>
-    .pepero-img {
-        display: flex;
-        position: relative;
-        flex-direction: row;
-        align-items: center;
-        width: 200px;
-        height: 200px; 
-        margin-bottom: 20vw;
-        margin-right: 5vw;
-        transform: rotate(-15deg); 
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+      align-items: center;
+      background-color: #faf9f5;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      height: 100vh;
     }
 
-    .pepero-img img {
-        animation: float 3s ease-in-out infinite;
+    .pepero-form {
+      width: 390px;
+      height: 844px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    #pepero {
-        position: absolute;
-        z-index: 1;
+    header {
+      padding-top: 70px;
+      align-items: center;
+      justify-content: center;
+      font-family: Inter;
     }
 
-    #chocoImage {
-        position: absolute;
-        z-index: 2;
+    h1 {
+      font-size: 25px;
+      font-weight: 600;
+      text-align: center;
+      color: #4b2a0b;
     }
-    
-    #decoImage {
-        position: absolute;
-        z-index: 3;
-    }
-    
-    #sauceImage {
-        position: absolute;
-        z-index: 4;
-    }
-    #letter{
-        margin-top: 5vw;
-        margin-left: 5vw;
-    }
-</style>
 
-{% for list in pepero_lists %}
-    <a href="{% url 'pepero:pepero_detail' list.id %}">
-        <img id="make_pepero" src="{% static 'assets/letterOnly.png' %}">
-        {{ list.title }}
-        {{ list.id }}
-    </a>
-{% endfor %}
+    h3 {
+      font-size: 17px;
+      font-weight: 600;
+      text-align: center;
+      color: #885c33;
+    }
 
-{% for list in pepero_lists %}
-    <div class="pepero-img">
-        <!-- Replace the src attribute with the correct path to your image -->
-        <a href="{% url 'pepero:pepero_detail' list.id %}">
-            <img src="{% static 'assets/pepero.png' %}" id="pepero">
-            <!-- 이미지 속성 설정 -->
-            <img src="{% if list.choco == '기본' %}{% static 'assets/pepero.png' %}
-                {% elif list.choco == '초코' %}{% static 'assets/choco.png' %}
-                {% elif list.choco == '딸기' %}{% static 'assets/strawberry.png' %}
-                {% elif list.choco == '화이트' %}{% static 'assets/whitechoco.png' %}
-                {% elif list.choco == '녹차' %}{% static 'assets/greentea.png' %}
-                {% else %}{% static 'assets/blueberry.png' %}{% endif %}" id="chocoImage"/>
-            <!-- 이미지 속성 설정 -->
-            <img src="{% if list.sauce == '기본' %}
-                {% elif list.sauce == '초코시럽' %}{% static 'assets/chocosyrup.png' %}
-                {% elif list.sauce == '딸기시럽' %}{% static 'assets/strawberrysyrup.png' %}
-                {% elif list.sauce == '화이트시럽' %}{% static 'assets/whitechocosyrup.png' %}
-                {% elif list.sauce == '녹차시럽' %}{% static 'assets/greenteasyrup.png' %}
-                {% else %}{% static 'assets/blueberrysyrup.png' %}{% endif %}" id="sauceImage"/>
-            <!-- 이미지 속성 설정 -->
-            <img src="{% if list.deco == '기본' %}
-                {% elif list.deco == '아몬드' %}{% static 'assets/almonddeco.png' %}
-                {% elif list.deco == '오레오' %}{% static 'assets/oreodeco.png' %}
-                {% elif list.deco == '하트' %}{% static 'assets/hartdeco.png' %}
-                {% elif list.deco == '별' %}{% static 'assets/stardeco.png' %}
-                {% else %}{% static 'assets/sprinklesdeco.png' %}{% endif %}" id="decoImage"/>
-            {{ list.title }}
-            {{ list.id }}
-            {{ list.choco }}
-            {{ list.sauce }}
-            {{ list.deco }}
-        </a>
-    </div>
-{% endfor %}
-{% endblock %}
+    .pepero-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* justify-content: flex-start; */
+      padding: 20px 10px;
+      /* font-size: 16px; */
+      /* outline: none; */
+      width: 380px;
+      height: 439px;
+    }
+
+    .pepero-show {
+      height: 480px;
+      display: flex;
+      justify-content: space-between;
+      width: 500px;
+      margin-right:40px;
+      margin-bottom: 30px;
+    }
+
+    .pepero-element {
+      position: absolute;
+      z-index: 1;
+      margin-right: 5px;
+    }
+
+    .choco-image {
+      position: absolute;
+      margin-left: -3px;
+      z-index: 2;
+    }
+
+    .deco-image {
+      position: absolute;
+      margin-left: 2px;
+      margin-top: 10px;
+      z-index: 3;
+    }
+
+    .sauce-image {
+      position: absolute;
+      margin-top: 20px;
+      margin-left: 5px;
+      z-index: 4;
+    }
+
+    #arrow1 {
+      width: 36px;
+      height: 25px;
+      border: none;
+      background-color: #faf9f5;
+      padding-left: 30px;
+      margin-top: -120px;
+      position: relative;
+      top: 280px;
+      left: -40px;
+    }
+
+    #arrow2 {
+      border: none;
+      background-color: #faf9f5;
+      padding-right: 15px;
+      margin-top: -120px;
+      width: 36px;
+      height: 25px;
+      position: relative;
+      top: 280px;
+      left: 30px;
+    }
+
+    .messageButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 0vw;
+
+}
+
+    .main-button {
+      color: white;
+      background-color: rgba(64, 31, 0, 1);
+      flex-shrink: 0;
+      width: 250px;
+      height: 50px;
+      cursor: pointer;
+      position: relative;
+      top: px;
+      border: none;
+      border-radius: 20px;
+      color: var(--mainWH, #fff);
+      text-align: center;
+      font-family: Pretendard;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  </style>
+    <section class="pepero-form">
+        <header>
+            <h1>받은 빼빼로들을 확인해볼까요?</h1>
+            <h3>
+                마음이 담긴 빼빼로와 편지들이  {{ pepero_lists.count }}개 도착했어요!<br />
+                지금 바로 확인해보세요!
+            </h3>
+        </header>
+        <div class="pepero-show">
+                <button type="button" id="arrow1" onclick="scrollPeperos('left')">
+                    <img src={% static 'assets/arrow1.png' %} alt="왼쪽 화살표">
+                </button>
+                {% for pepero in pepero_lists|slice:":5" %}
+                    <div id="messageButton">
+                        <a href="{% url 'pepero:pepero_detail' pepero.id %}">
+                            <img src="{% static 'assets/pepero.png' %}" class="pepero-element" id="peperoBase">
+                                <img src="{% if pepero.choco == '기본' %}
+                                    {% elif pepero.choco == '초코' %}{% static 'assets/choco.png' %}
+                                    {% elif pepero.choco == '딸기' %}{% static 'assets/strawberry.png' %}
+                                    {% elif pepero.choco == '화이트' %}{% static 'assets/whitechoco.png' %}
+                                    {% elif pepero.choco == '녹차' %}{% static 'assets/greentea.png' %}
+                                    {% else %}{% static 'assets/blueberry.png' %}
+                                    {% endif %}" class="choco-image" id="chocoImage"/>
+
+                                    <img src="{% if list.sauce == '기본' %}
+                                    {% elif pepero.sauce == '초코시럽' %}{% static 'assets/chocosyrup.png' %}
+                                    {% elif pepero.sauce == '딸기시럽' %}{% static 'assets/strawberrysyrup.png' %}
+                                    {% elif pepero.sauce == '화이트시럽' %}{% static 'assets/whitechocosyrup.png' %}
+                                    {% elif pepero.sauce == '녹차시럽' %}{% static 'assets/greenteasyrup.png' %}
+                                    {% else %}{% static 'assets/blueberrysyrup.png' %}{% endif %}" class="sauce-image"  id="sauceImage"/>
+
+                                    <img src="{% if pepero.deco == '기본' %}
+                                    {% elif pepero.deco == '아몬드' %}{% static 'assets/almonddeco.png' %}
+                                    {% elif pepero.deco == '오레오' %}{% static 'assets/oreodeco.png' %}
+                                    {% elif pepero.deco == '하트' %}{% static 'assets/hartdeco.png' %}
+                                    {% elif pepero.deco == '별' %}{% static 'assets/stardeco.png' %}
+                                    {% else %}{% static 'assets/sprinklesdeco.png' %}{% endif %}" class="deco-image" id="decoImage"/>
+                        </a>
+                    </div>
+                {% endfor %}
+                <button type="button" id="arrow2"  onclick="scrollPeperos('right')">
+                    <img src={% static 'assets/arrow2.png' %} alt="왼쪽 화살표">
+                </button>
+        </div>
+
+        <button onclick="window.open('{% url 'pepero:pepero_home' %}', '_blank')" class="main-button">
+            메인 화면으로
+        </button>
+        
+        </section>
+    {% endblock %}

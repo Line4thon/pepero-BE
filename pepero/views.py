@@ -107,7 +107,7 @@ def pepero_make_end_view(request):
 
 # 빼빼로 리스트
 def pepero_letter_list(request):
-    pepero_lists = Pepero.objects.all()
+    pepero_lists = Pepero.objects.all().order_by('-created_at')
     return render(request, 'peperos/pepero_list1.html', {'pepero_lists': pepero_lists})
     # return render(request, 'peperos/pepero_list1.html')
 
