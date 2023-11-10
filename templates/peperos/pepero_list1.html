@@ -4,8 +4,47 @@
     {% block content %}
     
     {% comment %} <img id="make_pepero" src = "{% static 'assets/letterOnly.png' %}"> {% endcomment %}
+    <style>
+        .pepero-img {
+            display:flex;position: relative;
+            
+            flex-direction: row; /* 가로로 정렬 */
+        align-items: center; /* 이미지를 수직 가운데 정렬 */
+            width: 200px;
+            height: 200px; 
+            margin-bottom: 20vw;
+            margin-right: 5vw;
+            transform: rotate(-15deg); 
+        }
 
+        .pepero-img img {
+            animation: float 3s ease-in-out infinite;
+        }
 
+        #pepero {
+            position: absolute;
+            z-index: 1;
+        }
+
+        #chocoImage {
+            position: absolute;
+            z-index: 2;
+        }
+        
+        #decoImage {
+            position: absolute;
+            z-index: 3;
+        }
+        
+        #sauceImage {
+            position: absolute;
+            z-index: 4;
+        }
+        #letter{
+            margin-top:5vw;
+            margin-left: 5vw;
+        }
+    </style>
 
     {% for list in pepero_lists %}
         <a href="{% url 'pepero:pepero_detail' list.id %}">
@@ -14,5 +53,78 @@
             {{ list.id }}
         </a>
     {% endfor %}
+    
+    {% for list in pepero_lists %}
+    <div class="pepero-img">
+        <!-- Replace the src attribute with the correct path to your image -->
+        <a href="{% url 'pepero:pepero_detail' list.id %}">
+            <img src = "{% static 'assets/pepero.png' %}" id = "pepero">
+            <img src="{% if list.choco == '화이트' %}{% static 'assets/strawberry.png' %}{% endif %}" id ="chocoImage"/>
+            <img src="" id ="sauceImage"/>
+            <img src="" id = "decoImage"/>
+            {{ list.title }}
+            {{ list.id }}
+            {{ list.choco }}
+            {{ list.sauce }}
+            {{ list.deco }}
+        </a>
+    </div>
+    {% endfor %}
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chocoImage = document.getElementById('chocoImage');
+            const selectedChoco = "{{ request.session.selected_choco }}";
+            console.log(selectedChoco)
+            if (selectedChoco === '기본') {
+                chocoImage.src = "{% static 'assets/pepero.png' %}";
+            } else if (selectedChoco === '초코') {
+                chocoImage.src = "{% static 'assets/choco.png' %}";
+            } else if (selectedChoco === '딸기') {
+                chocoImage.src = "{% static 'assets/strawberry.png' %}";
+            } else if (selectedChoco === '화이트') {
+                chocoImage.src = "{% static 'assets/whitechoco.png' %}";
+            } else if (selectedChoco === '녹차') {
+                chocoImage.src = "{% static 'assets/greentea.png' %}";
+            } else {
+                chocoImage.src = "{% static 'assets/blueberry.png' %}";
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const sauceImage = document.getElementById('sauceImage');
+            const selectedSauce = "{{ request.session.selected_sauce }}";
+            console.log(selectedSauce)
+            if (selectedSauce === '기본') {
+                sauceImage.src = "";
+            } else if (selectedSauce === '초코시럽') {
+                sauceImage.src = "{% static 'assets/chocosyrup.png' %}";
+            } else if (selectedSauce === '딸기시럽') {
+                sauceImage.src = "{% static 'assets/strawberrysyrup.png' %}";
+            } else if (selectedSauce === '화이트시럽') {
+                sauceImage.src = "{% static 'assets/whitechocosyrup.png' %}";
+            } else if (selectedSauce === '녹차시럽') {
+                sauceImage.src = "{% static 'assets/greenteasyrup.png' %}";
+            } else {
+                sauceImage.src = "{% static 'assets/blueberrysyrup.png' %}";
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const decoImage = document.getElementById('decoImage');
+            const selectedDeco = "{{ request.session.selected_deco }}";
+            console.log(selectedDeco)
+            if (selectedDeco === '기본') {
+                decoImage.src = "";
+            } else if (selectedDeco === '아몬드') {
+                decoImage.src = "{% static 'assets/almonddeco.png' %}";
+            } else if (selectedDeco === '오레오') {
+                decoImage.src = "{% static 'assets/oreodeco.png' %}";
+            } else if (selectedDeco === '하트') {
+                decoImage.src = "{% static 'assets/hartdeco.png' %}";
+            } else if (selectedDeco === '별') {
+                decoImage.src = "{% static 'assets/stardeco.png' %}";
+            } else {
+                decoImage.src = "{% static 'assets/sprinklesdeco.png' %}";
+            }
+        });
+    </script>
 {% endblock %}
