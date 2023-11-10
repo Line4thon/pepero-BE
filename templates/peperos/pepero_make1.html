@@ -5,21 +5,18 @@
   <!--css 파일-->
   <style>
     body {
-      /* font-family: "Noto Sans KR", sans-serif;
-      align-items: center; */
-
       font-family: "Noto Sans KR", sans-serif;
-      align-items: center;
       background-color: #faf9f5;
-      margin: 0;
       display: flex;
       justify-content: center;
-      height: 100vh;
+      align-items:center;
+      flex-direction: column; 
+      min-height: 100vh;
+      overflow: hidden;  
     }
 
     .make1-form {
       width: 390px;
-      height: 844px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -27,7 +24,7 @@
     }
 
     .header {
-      padding-top: 70px;
+      width:70%;
       align-items: center;
       justify-content: center;
     }
@@ -37,6 +34,7 @@
       font-weight: 600;
       text-align: center;
       color: #4b2a0b;
+      margin: 0 auto;
     }
 
     #text2 {
@@ -47,42 +45,28 @@
     }
 
     .make1 {
-      height: 480px;
+      width:60%;
       display: flex;
-      /* justify-content: space-between; */
-      width: 100%;
-      margin-top: 30px;
+      justify-content: center;
+      margin: 0 auto;
+
     }
 
     .show {
-      margin-left: 80px;
       width: 48%;
       padding: 10px;
-    }
-
-    #pepero {
-      height: 477px;
-      width: 40px;
-      padding-left: 10px;
-      position: absolute;
-      z-index: 1;
-    }
-    #make1Image {
+      margin: 0 auto;
+      display: flex;
+      justify-content: center; 
+      align-items: center;
       position: relative;
-      margin-left: 7px;
     }
 
-    #make1Image.img {
-      position: absoulute;
-      z-index: 2;
-      top: 0;
-      left: 0;
-    }
     .option {
       width: 48%;
       padding: 10px;
-      padding-top: 5px;
-      margin-right: 35px;
+      margin: auto;
+      
     }
 
     .option button {
@@ -97,12 +81,30 @@
       border: 1px solid #cbcbcb;
     }
 
+    #pepero {
+      height: 477px;
+      position: absolute; 
+      z-index: 1;
+      
+    }
+    #make1Image {
+      margin: auto;
+      margin-right:65px;
+      height: 500px; 
+      
+    }
+
+    #make1Image.img {
+      position: absoulute;
+      z-index: 2;
+    }
+
+    
     .next {
-      width: 100%;
-      padding-top: 70px;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      justify-content: space-between;
+      width: 70%; 
+      margin: 0 auto; 
     }
 
     .return,
@@ -110,13 +112,11 @@
       width: 120px;
       height: 44px;
       margin-top: 5px;
-      margin-left: 30px;
       border-radius: 16px;
       border: 1px solid;
     }
 
     .return {
-      margin-left: 5px;
       background-color: #401f00;
       color: white;
       font-size: 15px;
@@ -146,7 +146,7 @@
         <!--만든 빼빼로를 보여주는 화면을 포함하는 div 태그-->
         <div class="show">
           <img src="{% static 'assets/pepero.png' %}" id="pepero" />
-          <div id="make1Image"></div>
+          <div id="make1Image" ></div>
         </div>
         <!--버튼을 옵션을 선택하는 화면을 포함하는 div태그-->
         <div class="option">
