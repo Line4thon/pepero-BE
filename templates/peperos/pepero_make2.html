@@ -164,7 +164,7 @@
       <!--다음 과정을 선택할 버튼을 포함하는 div 태그-->
 
         <div class="next">
-          <button type="button" class="return">이전 단계</button>
+          <button type="button" class="return" id="beforeButton">이전 단계</button>
           <button type="submit" class="make3" id="nextButton">다음 단계</button>
         </div>
 
@@ -307,7 +307,12 @@
           chocoImage.src = "{% static 'assets/blueberry.png' %}";
         }
     });
-    
+
+    document
+        .getElementById("beforeButton")
+        .addEventListener("click", function () {
+          window.location.href = "{% url 'pepero:pepero_choco' %}";
+        });
     </script>
   </body>
   {% endblock %}
