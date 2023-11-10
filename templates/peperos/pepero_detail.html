@@ -126,6 +126,27 @@
     border-left: 0px;
     border-bottom: 0px;
 }
+
+.letter-button {
+  color: white;
+  background-color: #EADED8;
+  flex-shrink: 0;
+  width: 240px;
+  height: 50px;
+  cursor: pointer;
+  position: relative;
+  top: 150px;
+  margin-left:30px;
+  border: none;
+  border-radius: 20px;
+  color: rgba(64, 31, 0, 1);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
   </style>
   <body>
     <section class="message-form">
@@ -181,6 +202,10 @@
 
         </div>
       </div>
+      <button onclick="window.open('{% url 'pepero:pepero_list' %}', '_blank')" class="letter-button">
+        이전으로
+    </button>
     </section>
+    
   </body>
   {% endblock %}
