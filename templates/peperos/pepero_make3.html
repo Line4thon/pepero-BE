@@ -299,7 +299,7 @@
         const selectedChoco = "{{ request.session.selected_choco }}";
         console.log(selectedChoco)
         if (selectedChoco === '기본') {
-          chocoImage.src = "";
+          chocoImage.style.display = 'none';
         } else if (selectedChoco === '초코') {
           chocoImage.src = "{% static 'assets/choco.png' %}";
         } else if (selectedChoco === '딸기') {

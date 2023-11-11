@@ -115,7 +115,7 @@ def pepero_pepero_list(request):
 # 몇 번째(id) 편지인지 인자로 받음
 def pepero_letter_detail(request, letter_id):
     letter_detail = get_object_or_404(Pepero, pk=letter_id)
-    return render(request, 'peperos/pepero_detail.html', {'letter_detail':letter_detail})
+    return render(request, 'peperos/pepero_detail1.html', {'letter_detail':letter_detail})
     # return render(request, 'peperos/pepero_detail1.html')
     
 
@@ -127,3 +127,4 @@ def pepero_letters_list(request):
 def pepero_letters_detail(request,letter_id):
     letter_detail = get_object_or_404(Pepero, pk = letter_id)
     return render(request, 'peperos/pepero_detail.html', {'letter_detail':letter_detail})
+
