@@ -185,9 +185,7 @@
                 <button type="button" id="arrow1" onclick="slidPrev()">
                     <img src={% static 'assets/arrow1.png' %} alt="왼쪽 화살표">
                 </button>
-
-
-
+                
                     {% for pepero in pepero_lists|slice:"5" %}
                         <div id="messageButton">
                             <a href="{% url 'pepero:pepero_detail' pepero.id %}">
