@@ -1,5 +1,5 @@
 {% extends 'base.html'%}
-    {% block title %}로딩 완료 화면{% endblock %}
+    {% block title %}등록 완료{% endblock %}
     {% load static %}
     {% block content %}
     <style>
@@ -29,14 +29,18 @@
       }
 
       .header {
+        display: flex;
         align-items: center;
+        flex-direction: column;
         justify-content: center;
+        margin: 0 auto;
       }
 
       #text1 {
         font-size: 25px;
         font-weight: 600;
         color: #4b2a0b;
+        margin: 0 auto;
       }
 
       #text2 {
@@ -109,7 +113,6 @@
 
         }, 2000);
       }; 
-
       document.addEventListener('DOMContentLoaded', function () {
         const chocoImage = document.getElementById('chocoImage');
         const selectedChoco = "{{ request.session.selected_choco }}";
