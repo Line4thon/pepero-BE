@@ -6,27 +6,25 @@
 <style>
     body {
       font-family: "Noto Sans KR", sans-serif;
-      align-items: center;
-      background-color: #faf9f5;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      height: 100vh;
+        background-color: #faf9f5;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-direction: column; 
+        min-height: 100vh;
+        overflow: hidden; 
     }
 
     .pepero-form {
       width: 390px;
-      height: 844px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
     header {
-      padding-top: 70px;
       align-items: center;
       justify-content: center;
-      font-family: Inter;
     }
 
     h1 {
@@ -49,7 +47,7 @@
       flex-direction: column;
       align-items: center;
       /* justify-content: flex-start; */
-      padding: 20px 10px;
+      {% comment %} padding: 20px 10px; {% endcomment %}
       /* font-size: 16px; */
       /* outline: none; */
       width: 380px;
@@ -57,78 +55,58 @@
     }
 
     .pepero-show {
-      height: 480px;
       display: flex;
       justify-content: space-between;
-      width: 500px;
-      margin-right:40px;
-      margin-bottom: 30px;
+      width: 70%;
+      margin-top: 50%;
+      margin: 0 auto;
+      position: relative;
+      
+      height: 50vh;
+      background-color: #000;
     }
 
     .pepero-element {
       position: absolute;
       z-index: 1;
-      margin-right: 5px;
+      height: 100%; 
     }
 
     .choco-image {
       position: absolute;
-      margin-left: -3px;
       z-index: 2;
+      height: 80%; 
+      margin-left:-3px;
     }
 
     .deco-image {
       position: absolute;
-      margin-left: 2px;
-      margin-top: 10px;
       z-index: 3;
+      height: 80%; 
     }
 
     .sauce-image {
       position: absolute;
-      margin-top: 20px;
-      margin-left: 5px;
       z-index: 4;
+      height: 80%; 
     }
 
-    #arrow1 {
-      width: 36px;
-      height: 25px;
-      border: none;
-      background-color: #faf9f5;
-      padding-left: 30px;
-      margin-top: -120px;
-      position: relative;
-      top: 280px;
-      left: -40px;
-      transition: transform 0.3s ease-in-out
-    }
 
-    #arrow2 {
-      border: none;
-      background-color: #faf9f5;
-      padding-right: 15px;
-      margin-top: -120px;
-      width: 36px;
-      height: 25px;
-      position: relative;
-      top: 280px;
-      left: 30px;
-      transition: transform 0.3s ease-in-out
-    }
 
     .messageButton {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-right: 0vw;
+      display: flex;
+      align-items: center;
+      text-align: center;
+
 
     }
+
+
     .lists{
         display: flex;
         flex-direction: row;
         align-items: center;
-        margin-right: 0vw;
+
 
     }
 
@@ -170,6 +148,16 @@
         font-weight: 600;
         line-height: normal;
     }
+
+    .peperoBase{
+      height: 477px;
+    }
+    .next{
+      display: flex;
+      flex-direction: column; 
+      align-items: center; 
+      margin-top: 10%;
+    }
     
 </style>
     <section class="pepero-form">
@@ -182,59 +170,57 @@
         </header>
 
         <div class="pepero-show">
-                <button type="button" id="arrow1" onclick="slidPrev()">
-                    <img src={% static 'assets/arrow1.png' %} alt="왼쪽 화살표">
-                </button>
 
-                    {% for pepero in pepero_lists|slice:"5" %}
-                        <div id="messageButton">
-                            <a href="{% url 'pepero:pepero_detail' pepero.id %}">
-                                <img src="{% static 'assets/pepero.png' %}" class="pepero-element" id="peperoBase">
-                                <img src="{% if pepero.choco == '기본' %}
-                                    {% elif pepero.choco == '초코' %}{% static 'assets/choco.png' %}
-                                    {% elif pepero.choco == '딸기' %}{% static 'assets/strawberry.png' %}
-                                    {% elif pepero.choco == '화이트' %}{% static 'assets/whitechoco.png' %}
-                                    {% elif pepero.choco == '녹차' %}{% static 'assets/greentea.png' %}
-                                    {% else %}{% static 'assets/blueberry.png' %}
-                                    {% endif %}" class="choco-image" id="chocoImage"/>
-
-                                <img src="{% if list.sauce == '기본' %}
-                                    {% elif pepero.sauce == '초코시럽' %}{% static 'assets/chocosyrup.png' %}
-                                    {% elif pepero.sauce == '딸기시럽' %}{% static 'assets/strawberrysyrup.png' %}
-                                    {% elif pepero.sauce == '화이트시럽' %}{% static 'assets/whitechocosyrup.png' %}
-                                    {% elif pepero.sauce == '녹차시럽' %}{% static 'assets/greenteasyrup.png' %}
-                                    {% else %}{% static 'assets/blueberrysyrup.png' %}
-                                    {% endif %}" class="sauce-image"  id="sauceImage"/>
-
-                                <img src="{% if pepero.deco == '기본' %}
-                                    {% elif pepero.deco == '아몬드' %}{% static 'assets/almonddeco.png' %}
-                                    {% elif pepero.deco == '오레오' %}{% static 'assets/oreodeco.png' %}
-                                    {% elif pepero.deco == '하트' %}{% static 'assets/hartdeco.png' %}
-                                    {% elif pepero.deco == '별' %}{% static 'assets/stardeco.png' %}
-                                    {% else %}{% static 'assets/sprinklesdeco.png' %}
-                                    {% endif %}" class="deco-image" id="decoImage"/>
-                            </a>
-                        </div>
-                    {% endfor %}
+          {% for pepero in pepero_lists|slice:"5" %}
+              <a href="{% url 'pepero:pepero_detail' pepero.id %}">
+                <img src="{% static 'assets/pepero.png' %}" class="pepero-element" id="peperoBase">
+                <img src="{% if pepero.choco == '기본' %}
+                    {% elif pepero.choco == '초코' %}{% static 'assets/choco.png' %}
+                    {% elif pepero.choco == '딸기' %}{% static 'assets/strawberry.png' %}
+                    {% elif pepero.choco == '화이트' %}{% static 'assets/whitechoco.png' %}
+                    {% elif pepero.choco == '녹차' %}{% static 'assets/greentea.png' %}
+                    {% else %}{% static 'assets/blueberry.png' %}
+                    {% endif %}" class="choco-image" id="chocoImage"/>
 
 
+                <img src="{% if list.sauce == '기본' %}
+                    {% elif pepero.sauce == '초코시럽' %}{% static 'assets/chocosyrup.png' %}
+                    {% elif pepero.sauce == '딸기시럽' %}{% static 'assets/strawberrysyrup.png' %}
+                    {% elif pepero.sauce == '화이트시럽' %}{% static 'assets/whitechocosyrup.png' %}
+                    {% elif pepero.sauce == '녹차시럽' %}{% static 'assets/greenteasyrup.png' %}
+                    {% else %}{% static 'assets/blueberrysyrup.png' %}
+                    {% endif %}" class="sauce-image"  id="sauceImage"/>
 
-                <button type="button" id="arrow2"  onclick="slidNext()">
-                    <img src={% static 'assets/arrow2.png' %} alt="오른쪽 화살표">
-                </button>
+                <img src="{% if pepero.deco == '기본' %}
+                    {% elif pepero.deco == '아몬드' %}{% static 'assets/almonddeco.png' %}
+                    {% elif pepero.deco == '오레오' %}{% static 'assets/oreodeco.png' %}
+                    {% elif pepero.deco == '하트' %}{% static 'assets/hartdeco.png' %}
+                    {% elif pepero.deco == '별' %}{% static 'assets/stardeco.png' %}
+                    {% else %}{% static 'assets/sprinklesdeco.png' %}
+                    {% endif %}" class="deco-image" id="decoImage"/>
+          </a>
+          {% endfor %}
+        </div>
+        
+        <div class="next">
+          <button id= "main" class="main-button" >
+              메인 화면으로
+          </button>
+          <button id="letter" class="letter-button">
+              한눈에 보기
+          </button>
         </div>
 
-        <button onclick="window.open('{% url 'pepero:pepero_home' %}', '_blank')" class="main-button">
-            메인 화면으로
-        </button>
-        <button onclick="window.open('{% url 'pepero:letters_list' %}', '_blank')" class="letter-button">
-            한눈에 보기
-        </button>
-
-
-
-
-
-        
-        </section>
-    {% endblock %}
+        <script>
+          document.getElementById("main")
+                  .addEventListener("click", function(){
+                      window.location.href = "{% url 'pepero:pepero_home' %}"
+                  });
+  
+          document.getElementById("letter")
+                  .addEventListener("click" ,function(){
+                      window.location.href = "{% url 'pepero:letters_list' %}"
+                  });
+      </script>
+      </section>
+{% endblock %}

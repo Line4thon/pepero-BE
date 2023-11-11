@@ -227,15 +227,26 @@
         </div>
         <!--다음 과정을 선택할 버튼을 포함하는 div 태그-->
             
-                <button onclick="window.open('{% url 'pepero:pepero_home' %}', '_blank')" class="main-button">
+                <button id="main" class="main-button">
                     메인 화면으로
                 </button>
-                <button onclick="window.open('{% url 'pepero:pepero_list' %}', '_blank')" class="letter-button">
+                <button id="letter_one" class="letter-button">
                     하나씩 보기
                 </button>
 
         </section>
         
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.getElementById("main")
+                .addEventListener("click",function(){
+                    window.location.href = "{% url 'pepero:pepero_home' %}"
+                });
+
+        document.getElementById("letter_one")
+                .addEventListener("click" ,function(){
+                    window.location.href = "{% url 'pepero:pepero_list' %}"
+                });
+    </script>
 </body>
     {% endblock %}
