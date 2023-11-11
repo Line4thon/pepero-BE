@@ -173,27 +173,31 @@
             alt="초콜릿"
           />
           <img
-            src="{% if letter_detail.sauce == '기본' %}
-            {% elif letter_detail.sauce == '초코시럽' %}{% static 'assets/chocosyrup.png' %}
+          {% if letter_detail.sauce != '기본' %}
+            src="{% if letter_detail.sauce == '초코시럽' %}{% static 'assets/chocosyrup.png' %}
             {% elif letter_detail.sauce == '딸기시럽' %}{% static 'assets/strawberrysyrup.png' %}
             {% elif letter_detail.sauce == '화이트시럽' %}{% static 'assets/whitechocosyrup.png' %}
             {% elif letter_detail.sauce == '녹차시럽' %}{% static 'assets/greenteasyrup.png' %}
-            {% else %}{% static 'assets/blueberrysyrup.png' %}{% endif %}" id="sauceImage"
+            {% elif letter_detail.sauce == '블루베리시럽' %}{% static 'assets/blueberrysyrup.png' %}
+            {% endif %}"
             class="sauce-image"
             id="sauceImage"
-            alt="시럽"
-          />
-          <img
-            src="{% if letter_detail.deco == '기본' %}
-            {% elif letter_detail.deco == '아몬드' %}{% static 'assets/almonddeco.png' %}
-            {% elif letter_detail.deco == '오레오' %}{% static 'assets/oreodeco.png' %}
-            {% elif letter_detail.deco == '하트' %}{% static 'assets/hartdeco.png' %}
-            {% elif letter_detail.deco == '별' %}{% static 'assets/stardeco.png' %}
-            {% else %}{% static 'assets/sprinklesdeco.png' %}{% endif %}" id="decoImage"
-            class="deco-image"
-            id="decoImage"
-            alt="토핑"
-          />
+          {% endif %}
+        />
+
+
+        <img
+        {% if letter_detail.deco != '기본' %}
+          src="{% if letter_detail.deco == '아몬드' %}{% static 'assets/almonddeco.png' %}
+          {% elif letter_detail.deco == '오레오' %}{% static 'assets/oreodeco.png' %}
+          {% elif letter_detail.deco == '하트' %}{% static 'assets/hartdeco.png' %}
+          {% elif letter_detail.deco == '별' %}{% static 'assets/stardeco.png' %}
+          {% elif letter_detail.deco == '스프링클' %}{% static 'assets/sprinklesdeco.png' %}{% endif %}"
+          id="decoImage"
+          class="deco-image"
+          alt="토핑"
+        {% endif %}
+        />
 
           <div class="output-wrapper">
             <p1 id="titleOutput">{{ letter_detail.title }}</p1>
