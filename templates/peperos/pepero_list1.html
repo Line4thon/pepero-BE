@@ -211,21 +211,32 @@
                     {% endif %}" class="choco-image" id="chocoImage"/>
 
 
-                <img src="{% if list.sauce == '기본' %}
-                    {% elif pepero.sauce == '초코시럽' %}{% static 'assets/chocosyrup.png' %}
-                    {% elif pepero.sauce == '딸기시럽' %}{% static 'assets/strawberrysyrup.png' %}
-                    {% elif pepero.sauce == '화이트시럽' %}{% static 'assets/whitechocosyrup.png' %}
-                    {% elif pepero.sauce == '녹차시럽' %}{% static 'assets/greenteasyrup.png' %}
-                    {% else %}{% static 'assets/blueberrysyrup.png' %}
-                    {% endif %}" class="sauce-image"  id="sauceImage"/>
+                    <img
+                    {% if pepero.sauce != '기본' %}
+                      src="{% if pepero.sauce == '초코시럽' %}{% static 'assets/chocosyrup.png' %}
+                      {% elif pepero.sauce == '딸기시럽' %}{% static 'assets/strawberrysyrup.png' %}
+                      {% elif pepero.sauce == '화이트시럽' %}{% static 'assets/whitechocosyrup.png' %}
+                      {% elif pepero.sauce == '녹차시럽' %}{% static 'assets/greenteasyrup.png' %}
+                      {% elif pepero.sauce == '블루베리시럽' %}{% static 'assets/blueberrysyrup.png' %}
+                      {% endif %}"
+                      class="sauce-image"
+                      id="sauceImage"
+                    {% endif %}
+                  />
 
-                <img src="{% if pepero.deco == '기본' %}
-                    {% elif pepero.deco == '아몬드' %}{% static 'assets/almonddeco.png' %}
+
+                  <img
+                  {% if pepero.deco != '기본' %}
+                    src="{% if pepero.deco == '아몬드' %}{% static 'assets/almonddeco.png' %}
                     {% elif pepero.deco == '오레오' %}{% static 'assets/oreodeco.png' %}
                     {% elif pepero.deco == '하트' %}{% static 'assets/hartdeco.png' %}
                     {% elif pepero.deco == '별' %}{% static 'assets/stardeco.png' %}
-                    {% else %}{% static 'assets/sprinklesdeco.png' %}
-                    {% endif %}" class="deco-image" id="decoImage"/>
+                    {% elif pepero.deco == '스프링클' %}{% static 'assets/sprinklesdeco.png' %}{% endif %}"
+                    id="decoImage"
+                    class="deco-image"
+                    alt="토핑"
+                  {% endif %}
+                  />
           </a>
           {% endfor %}
         </div>

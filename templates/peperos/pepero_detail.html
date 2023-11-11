@@ -202,10 +202,17 @@
 
         </div>
       </div>
-      <button onclick="window.open('{% url 'pepero:pepero_list' %}', '_blank')" class="letter-button">
+      <button id="letter_one" class="letter-button">
         이전으로
     </button>
     </section>
+
+    <script>
+      document.getElementById("letter_one")
+                .addEventListener("click" ,function(){
+                    window.location.href = "{% url 'pepero:pepero_list' %}"
+      });
+    </script>
     
   </body>
   {% endblock %}
