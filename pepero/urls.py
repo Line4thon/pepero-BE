@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import pepero_letters_list ,pepero_letter_detail, pepero_letter_list, pepero_make_choco_view, pepero_make_letter_view, pepero_make_deco_view,pepero_make_sauce_view,pepero_make_start_view,pepero_make_home_view,pepero_make_end_view,pepero_make_ing_view
+from .views import pepero_letters_list ,pepero_letter_detail, pepero_make_choco_view, pepero_make_letter_view, pepero_make_deco_view,pepero_make_sauce_view,pepero_make_start_view,pepero_make_home_view,pepero_make_end_view,pepero_make_ing_view, pepero_pepero_list
 
 app_name = 'pepero'
 
@@ -15,7 +15,7 @@ urlpatterns = [
     path('end/', pepero_make_end_view, name='pepero_end'),
     path('ing/', pepero_make_ing_view, name='pepero_ing'),
 
-    path('list/', pepero_letter_list, name='pepero_list'),    
+    path('list/', pepero_pepero_list, name='pepero_list'),    
     path('list/<int:letter_id>', pepero_letter_detail, name='pepero_detail'),
     
     path('letterslist/', pepero_letters_list, name='letters_list'),
