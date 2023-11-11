@@ -1,8 +1,10 @@
 {% extends 'base.html'%}
-    {% block title %}등록 완료{% endblock %}
+    {% block title %}로딩 끝{% endblock %}
     {% load static %}
     {% block content %}
+
     <style>
+
       body {
         font-family: "Noto Sans KR", sans-serif;
         background-color: #faf9f5;
@@ -12,8 +14,7 @@
         justify-content: center;
         height: 100vh;
         overflow: hidden; 
-        margin-top: -110px;
-    
+        margin-top: -150px;
       }
 
       .main-form {
@@ -48,16 +49,15 @@
         position: relative;
         width: 200px;
         height: 200px; 
-        margin-bottom: 20vw;
         margin-right: 5vw;
         transform: rotate(-15deg);
       }
-
+      
       .pepero-img img {
         animation: float 3s ease-in-out infinite;
       }
-
       #pepero {
+
         position: absolute;
         z-index: 1;
       }
@@ -81,12 +81,12 @@
         margin-top:5vw;
         margin-left: 5vw;
       }
+
     </style>
-  </head>
-  <body>
+<body>
     <section class="main-form">
       <div class="header">
-        <p id="text1">전송 완료!</p>
+        <p id="text1">전송완료!</p>
         <p id="text2">빼빼로가 친구집에 놀러갔어요!</p>
       </div>
       <div class="pepero-img">
@@ -96,19 +96,20 @@
         <img src="" id ="sauceImage"/>
         <img src="" id = "decoImage"/>
         <img src = "{% static 'assets/letterOnly.png' %}" id = "letter">
+        
       </div>
     </section>
-
+  </body>
     <script>
-      // // DOM이 완전히 로드된 후 실행될 함수
-      // window.onload = function () {
-      //   // 2000밀리초(2초) 후에 실행될 함수를 setTimeout을 이용하여 설정
-      //   setTimeout(function () {
-      //     // 편지 보관함으로 리다이렉트
-      //     window.location.href = "{% url 'pepero:pepero_home' %}";
+      // DOM이 완전히 로드된 후 실행될 함수
+      window.onload = function () {
+        // 2000밀리초(2초) 후에 실행될 함수를 setTimeout을 이용하여 설정
+        setTimeout(function () {
+          // 편지 보관함으로 리다이렉트
+          window.location.href = "{% url 'pepero:pepero_end' %}";
 
-      //   }, 2000);
-      // }; 
+        }, 2000);
+      }; 
       document.addEventListener('DOMContentLoaded', function () {
         const chocoImage = document.getElementById('chocoImage');
         const selectedChoco = "{{ request.session.selected_choco }}";
@@ -164,5 +165,4 @@
         }
     });
     </script>
-  </body>
-{% endblock %}
+  {% endblock %}
