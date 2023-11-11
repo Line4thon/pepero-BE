@@ -3,22 +3,17 @@
     {% load static %}
     {% block content %}
     <style>
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
       body {
         font-family: "Noto Sans KR", sans-serif;
         background-color: #faf9f5;
+        flex-direction: column;
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100vh;
         overflow: hidden; 
+        margin-top: -110px;
+    
       }
 
       .main-form {
@@ -34,6 +29,7 @@
         flex-direction: column;
         justify-content: center;
         margin: 0 auto;
+        margin-bottom: 50px;
       }
 
       #text1 {
@@ -104,15 +100,15 @@
     </section>
 
     <script>
-      // DOM이 완전히 로드된 후 실행될 함수
-      window.onload = function () {
-        // 2000밀리초(2초) 후에 실행될 함수를 setTimeout을 이용하여 설정
-        setTimeout(function () {
-          // 편지 보관함으로 리다이렉트
-          window.location.href = "{% url 'pepero:pepero_home' %}";
+      // // DOM이 완전히 로드된 후 실행될 함수
+      // window.onload = function () {
+      //   // 2000밀리초(2초) 후에 실행될 함수를 setTimeout을 이용하여 설정
+      //   setTimeout(function () {
+      //     // 편지 보관함으로 리다이렉트
+      //     window.location.href = "{% url 'pepero:pepero_home' %}";
 
-        }, 2000);
-      }; 
+      //   }, 2000);
+      // }; 
       document.addEventListener('DOMContentLoaded', function () {
         const chocoImage = document.getElementById('chocoImage');
         const selectedChoco = "{{ request.session.selected_choco }}";

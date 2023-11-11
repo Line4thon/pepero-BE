@@ -4,15 +4,6 @@
     {% block content %}
 
     <style>
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-20px);
-        }
-      } 
 
       body {
         font-family: "Noto Sans KR", sans-serif;
@@ -21,8 +12,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 75vh;
+        height: 100vh;
         overflow: hidden; 
+        margin-top: -150px;
       }
 
       .main-form {
@@ -38,6 +30,7 @@
         flex-direction: column;
         justify-content: center;
         margin: 0 auto;
+        margin-bottom: 50px;
       }
 
       #text1 {
@@ -90,7 +83,7 @@
       }
 
     </style>
-
+<body>
     <section class="main-form">
       <div class="header">
         <p id="text1">익명으로 전송중 .....</p>
@@ -106,7 +99,7 @@
         
       </div>
     </section>
-
+  </body>
     <script>
       // DOM이 완전히 로드된 후 실행될 함수
       window.onload = function () {
@@ -171,8 +164,5 @@
           decoImage.src = "{% static 'assets/sprinklesdeco.png' %}";
         }
     });
-
-
     </script>
-  </body>
   {% endblock %}
