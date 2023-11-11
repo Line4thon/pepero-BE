@@ -105,11 +105,15 @@
       align-items: center;
       text-align: center;
 
-}
+
+    }
+
+
     .lists{
         display: flex;
         flex-direction: row;
         align-items: center;
+
 
     }
 
@@ -174,6 +178,7 @@
         </header>
 
         <div class="pepero-show">
+
           {% for pepero in pepero_lists|slice:"5" %}
               <a href="{% url 'pepero:pepero_detail' pepero.id %}">
                 <img src="{% static 'assets/pepero.png' %}" class="pepero-element" id="peperoBase">
@@ -184,6 +189,7 @@
                     {% elif pepero.choco == '녹차' %}{% static 'assets/greentea.png' %}
                     {% else %}{% static 'assets/blueberry.png' %}
                     {% endif %}" class="choco-image" id="chocoImage"/>
+
 
                 <img src="{% if list.sauce == '기본' %}
                     {% elif pepero.sauce == '초코시럽' %}{% static 'assets/chocosyrup.png' %}
@@ -205,12 +211,24 @@
         </div>
         
         <div class="next">
-          <button onclick="window.open('{% url 'pepero:pepero_home' %}', '_blank')" class="main-button">
+          <button id= "main" class="main-button" >
               메인 화면으로
           </button>
-          <button onclick="window.open('{% url 'pepero:letters_list' %}', '_blank')" class="letter-button">
+          <button id="letter" class="letter-button">
               한눈에 보기
           </button>
         </div>
+
+        <script>
+          document.getElementById("main")
+                  .addEventListener("click", function(){
+                      window.location.href = "{% url 'pepero:pepero_home' %}"
+                  });
+  
+          document.getElementById("letter")
+                  .addEventListener("click" ,function(){
+                      window.location.href = "{% url 'pepero:letters_list' %}"
+                  });
+      </script>
       </section>
 {% endblock %}
