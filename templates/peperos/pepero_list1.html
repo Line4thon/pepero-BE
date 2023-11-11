@@ -201,7 +201,7 @@
         <div class="pepero-show">
 
           {% for pepero in pepero_lists|slice:"5" %}
-              <a href="{% url 'pepero:pepero_detail' pepero.id %}">
+              <a href="{% url 'pepero:pepero_one_detail' pepero.id %}">
                 <img src="{% static 'assets/pepero.png' %}" class="pepero-element" id="peperoBase">
                 <img src="{% if pepero.choco == '기본' %}
                     {% elif pepero.choco == '초코' %}{% static 'assets/choco.png' %}

@@ -220,7 +220,7 @@
         <div class="list">
             {% for list in pepero_lists %}
                 <div class="pepero-img">
-                    <a href="{% url 'pepero:pepero_detail' list.id %}">
+                    <a href="{% url 'pepero:letters_details' list.id %}">
                         <img id="letterImg" src="{% static 'assets/letterImg.png' %}">
                         <img src="{% static 'assets/pepero.png' %}" id="pepero">
                         <!-- 이미지 속성 설정 -->

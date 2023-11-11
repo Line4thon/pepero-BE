@@ -16,7 +16,7 @@ urlpatterns = [
     path('ing/', pepero_make_ing_view, name='pepero_ing'),
 
     path('list/', pepero_pepero_list, name='pepero_list'),    
-    path('list/<int:letter_id>', pepero_letter_detail, name='pepero_detail'),
+    path('list/<int:letter_id>', pepero_letter_detail, name='pepero_one_detail'),
     
     path('letterslist/', pepero_letters_list, name='letters_list'),
     path('letterslist/<int:letter_id>', pepero_letters_detail, name='letters_detail'),
